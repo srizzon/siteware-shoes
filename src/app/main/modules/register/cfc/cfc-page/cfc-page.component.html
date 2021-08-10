@@ -1,0 +1,86 @@
+<section class="cp w-100"
+         fxLayout="column"
+         fxLayoutAlign="start start">
+
+  <app-header-buttons class="w-100 cp_header"
+                      [buttons]="buttons"
+                      (buttonsEmmiter)="buttonsActions($event)"> </app-header-buttons>
+  <div class="cp__box w-100">
+    <div class="cp__data w-100"
+         fxLayout="row layout-wrap"
+         fxLayoutAlign="space-between start">
+
+      <div class="cp__item mb-3"
+           fxFlex="25%"
+           fxLayout="column"
+           fxLayoutAlign="start start">
+        <span class="cp__line1">NOME FANTASIA</span>
+        <span class="cp__line2">{{cfc.nomeFantasia ? cfc.nomeFantasia : '-'}}</span>
+      </div>
+      <div class="cp__item mb-3"
+           fxFlex="25%"
+           fxLayout="column"
+           fxLayoutAlign="start start">
+        <span class="cp__line1">CNPJ</span>
+        <span class="cp__line2">{{cfc.cnpj | cnpj}}</span>
+      </div>
+      <div class="cp__item mb-3"
+           fxFlex="25%"
+           fxLayout="column"
+           fxLayoutAlign="start start">
+        <span class="cp__line1">CÓDIGO CFC DETRAN</span>
+        <span class="cp__line2">{{cfc.codCfcDetran ? cfc.codCfcDetran : '-'}}</span>
+      </div>
+      <div class="cp__item mb-3"
+           fxFlex="25%"
+           fxLayout="column"
+           fxLayoutAlign="start start">
+        <span class="cp__line1">UNIDADE DETRAN</span>
+        <span class="cp__line2">{{cfc.unidadeDetranDescricao ? cfc.unidadeDetranDescricao : '-'}}</span>
+      </div>
+      <div class="cp__item mb-3"
+           fxFlex="25%"
+           fxLayout="column"
+           fxLayoutAlign="start start">
+        <span class="cp__line1">ATIVO</span>
+        <span class="cp__line2">{{cfc.ativo | truefalse}}</span>
+      </div>
+      <div class="cp__item mb-3"
+           fxFlex="25%"
+           fxLayout="column"
+           fxLayoutAlign="start start">
+        <span class="cp__line1">EMAIL CONTATO</span>
+        <span class="cp__line2">{{cfc.emailContato ? cfc.emailContato : '-'}}</span>
+      </div>
+      <div class="cp__item mb-3"
+           fxFlex="25%"
+           fxLayout="column"
+           fxLayoutAlign="start start">
+        <span class="cp__line1">TELEFONE CONTATO</span>
+        <span class="cp__line2">{{cfc.telefone ? cfc.telefone : '-'}}</span>
+      </div>
+      <div class="cp__item mb-3"
+           fxFlex="25%"
+           fxLayout="column"
+           fxLayoutAlign="start start">
+        <span class="cp__line1">CIDADE</span>
+        <span class="cp__line2">{{cfc.cidade ? cfc.cidade : '-'}}</span>
+      </div>
+    </div>
+
+    <mat-tab-group [selectedIndex]="index">
+      <mat-tab class="cp__fisrt"
+               label="DADOS CADASTRAIS">
+        <app-cfc-detail></app-cfc-detail>
+      </mat-tab>
+      <mat-tab class="cp__second"
+               label="INSTRUTORES">
+        <app-cfc-instructor></app-cfc-instructor>
+      </mat-tab>
+      <mat-tab class="cp__third"
+               label="VEÍCULOS">
+        <app-cfc-vehicle></app-cfc-vehicle>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</section>

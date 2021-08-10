@@ -1,0 +1,31 @@
+<section class="historic"
+         fxLayout="column"
+         fxLayoutAlign="center center">
+  <h1 mat-dialog-title
+      fxFlexAlign="start"
+      class="historic__title">Histórico</h1>
+  <div class="historic__sub-title-box"
+       fxLayout="column"
+       fxLayoutAlign="center start">
+    <span class="historic__candidate w-100">Candidato</span>
+    <span class="historic__candidate-name w-100">{{data.candidate}}</span>
+  </div>
+  <mat-dialog-content class="mat-typography historic__content"
+                      fxLayout="column"
+                      fxLayoutAlign="start start">
+    <div class="w-100">
+      <app-table-custom [tableData]="tableData"></app-table-custom>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end"
+                      class="historic__actions w-100 mt-3"
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center">
+    <button class="historic__cancel"
+            mat-dialog-close
+            mat-stroked-button>
+      <mat-icon>close</mat-icon>
+      FECHAR
+    </button>
+  </mat-dialog-actions>
+</section>

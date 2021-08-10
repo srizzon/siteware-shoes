@@ -1,0 +1,104 @@
+<section>
+  <form [formGroup]="form"
+        fxLayout="column"
+        fxLayout.gt-sm="row layout-wrap"
+        fxLayoutAlign="start start"
+        style="padding-bottom: 10px;">
+
+    <app-header-inside-page class="w-100">
+      <button mat-raised-button
+              color="primary"
+              (click)="addGrid()">
+        <mat-icon>add_circle_outline</mat-icon>
+        ADICIONAR GRADE
+      </button>
+    </app-header-inside-page>
+
+    <span class="sub-title mb-3">Selecione as Opções</span>
+
+    <div fxLayout="row layout-wrap"
+         fxLayoutAlign="start start"
+         fxFlex="100%"
+         class="filter"
+         fxLayoutGap="42px">
+
+      <div fxFlex="30%">
+        <app-service-schedulling-autocomplete class="auto-complete"
+                                              formControlName="service"
+                                              [fControl]="form.controls.service">
+        </app-service-schedulling-autocomplete>
+      </div>
+
+      <mat-form-field appearance="outline"
+                      fxFlex="30%">
+        <mat-label>MODELO</mat-label>
+        <mat-select formControlName="model">
+          <mat-option *ngFor="let item of classModel"
+                      [value]="item.descricao">
+            {{item.descricao}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      fxFlex="30%"
+                      class="mb-3 filter__field">
+        <mat-label>SITUAÇÃO</mat-label>
+        <mat-select formControlName="situation">
+          <mat-option *ngFor="let item of situations"
+                      [value]="item.id">
+            {{item.descricao}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="pos-relative"
+           fxFlex="30%">
+        <app-cfc-schedulling-autocomplete class="auto-complete"
+                                          formControlName="cfc"
+                                          [fControl]="form.controls.cfc">
+        </app-cfc-schedulling-autocomplete>
+      </div>
+
+      <div class="pos-relative"
+           fxFlex="30%">
+        <app-instructor-schedulling-autocomplete class="filter__field"
+                                                 formControlName="instructor"
+                                                 [fControl]="form.controls.instructor">
+        </app-instructor-schedulling-autocomplete>
+      </div>
+
+      <div fxFlex="30%"
+           class="ml-2">
+        <label class="w-100 d-block mb-2">TURNO</label>
+        <mat-radio-group formControlName="turno"
+                         color="primary"
+                         fxLayout="row"
+                         fxLayoutAlign="start center"
+                         fxLayoutGap="48px">
+          <mat-radio-button value="MANHA">
+            MANHÃ
+          </mat-radio-button>
+          <mat-radio-button value="TARDE">
+            TARDE
+          </mat-radio-button>
+          <mat-radio-button value="NOITE">
+            NOITE
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    </div>
+    <div class="w-100 txt-center">
+      <button mat-raised-button
+              color="primary"
+              class="mt-1"
+              (click)="onSubmit()"
+              >
+        <mat-icon> refresh</mat-icon> MOSTRAR GRADES
+      </button>
+    </div>
+  </form>
+  <app-table-custom *ngIf="tableData && tableData.data.length > 0"
+                    [tableData]="tableData"></app-table-custom>
+</section>

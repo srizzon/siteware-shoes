@@ -1,0 +1,43 @@
+<section fxLayout="column"
+         fxLayout.gt-sm="row layout-wrap"
+         fxLayoutAlign="start start"
+         fxLayoutGap="24px"
+         class="class-page">
+  <app-header-inside-page class="w-100"> </app-header-inside-page>
+  <div fxFlex="49%"
+       class="class-page__candidates">
+    <h2 class="sub-title mb-4">ALUNOS</h2>
+    <app-table-custom-pagination  (paginatorEmitter)="changePaginator($event)">
+      <mat-form-field class="w-75 mt-4 candidate-table-select__filter"
+                      appearance="outline">
+        <mat-label>Filtro</mat-label>
+        <input matInput
+               (keyup)="applyFilter($event)"
+               placeholder="Pesquisa por Nome ou CPF"
+               #input>
+      </mat-form-field>
+    </app-table-custom-pagination>
+  </div>
+  <div fxFlex="49%">
+    <h2 class="sub-title mb-4">TURMA</h2>
+    <app-table-custom [tableData]="tableClass">
+      <div fxLayout="row"
+           fxLayoutAlign="space-between center"
+           class="class-page__box-class mb-3">
+        <div fxFlex="10%"
+             fxLayout="column"
+             fxLayoutAlign="center center">
+          <span class="class-page__box-class__vacancy">Vagas</span>
+          <span class="class-page__box-class__quantity">{{class.vagas}}</span>
+        </div>
+        <div fxFlex="90%"
+             fxLayout="column"
+             fxLayoutAlign="center start">
+          <span class="class-page__box-class__class">{{class.descricao}}</span>
+          <span class="class-page__box-class__instructor">{{class.instrutor}}</span>
+          <span class="class-page__box-class__date">Início: {{class.inicio | date:'dd/MM' }} - {{class.turno | turn}}</span>
+        </div>
+      </div>
+    </app-table-custom>
+  </div>
+</section>

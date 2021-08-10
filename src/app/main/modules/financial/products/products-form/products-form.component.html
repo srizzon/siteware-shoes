@@ -1,0 +1,167 @@
+<section class="product">
+  <app-header-inside-page> </app-header-inside-page>
+
+  <form [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        fxLayout="row layout-wrap"
+        fxLayoutAlign="space-between start"
+        class="w-100">
+    <div fxFlex="100%"
+         fxLayout="row layout-wrap"
+         fxLayoutAlign="start center"
+         fxLayoutGap="24px"
+         class="product__data">
+      <h2 fxFlex="100%"
+          class="sub-title">DADOS DO PRODUTO</h2>
+      <mat-form-field fxFlex="30%"
+                      appearance="outline">
+        <mat-label>DESCRIÇÃO</mat-label>
+        <input matInput
+               type="text"
+               formControlName="descricao"
+               required />
+      </mat-form-field>
+
+      <mat-form-field fxFlex="15%"
+                      appearance="outline">
+        <mat-label>VALOR MÍNIMO</mat-label>
+        <input matInput
+               currencyMask
+               [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+               type="text"
+               formControlName="valorMinimo">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="15%"
+                      appearance="outline">
+        <mat-label>VALOR PADRÃO</mat-label>
+        <input matInput
+               currencyMask
+               [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+               type="text"
+               formControlName="valorPadrao">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="15%"
+                      appearance="outline">
+        <mat-label>MARGEM DE LUCRO(%)</mat-label>
+        <input matInput
+               type="number"
+               formControlName="margemLucro"
+               required />
+      </mat-form-field>
+
+      <mat-form-field fxFlex="15%"
+                      appearance="outline">
+        <mat-label>QUANTIDADE</mat-label>
+        <input matInput
+               type="number"
+               formControlName="quantidade"
+               required />
+      </mat-form-field>
+
+      <mat-form-field fxFlex="30%"
+                      appearance="outline">
+        <mat-label>TIPO DE PRODUTO</mat-label>
+        <mat-select formControlName="tipoProduto">
+          <mat-option *ngFor="let item of productType"
+                      [value]="item.id">
+            {{item.label}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="pos-relative"
+           fxFlex="30%">
+        <app-cfc-autocomplete class="auto-complete"
+                              formControlName="cfc"
+                              [fControl]="form.controls.cfc">
+        </app-cfc-autocomplete>
+      </div>
+
+      <div fxFlex="30%"
+           class="mt-3">
+        <span fxFlex="35%"
+              class="pb-4">
+          <mat-checkbox color="primary"
+                        formControlName="market">MARKETPLACE</mat-checkbox>
+        </span>
+
+        <span fxFlex="30%"
+              class="pb-4">
+          <mat-checkbox color="primary"
+                        formControlName="ativo">ATIVO</mat-checkbox>
+        </span>
+      </div>
+
+      <mat-divider class="w-100 mb-3"></mat-divider>
+
+      <h2 fxFlex="100%"
+          class="sub-title">DADOS DE AUDITORIA</h2>
+
+      <span fxFlex="100%"
+            fxLayout="row layout-wrap"
+            fxLayoutGap="42px">
+
+        <mat-form-field fxFlex="25%"
+                        appearance="outline">
+          <mat-label>DATA DE CADASTRO</mat-label>
+          <input matInput
+                 type="text"
+                 dateDirective
+                 formControlName="dataCadastro">
+        </mat-form-field>
+
+        <mat-form-field fxFlex="55%"
+                        appearance="outline">
+          <mat-label>USUÁRIO DE CADASTRO</mat-label>
+          <input matInput
+                 type="text"
+                 formControlName="usuarioCadastro">
+        </mat-form-field>
+
+        <mat-form-field fxFlex="25%"
+                        appearance="outline">
+          <mat-label>DATA DE ALTERAÇÃO</mat-label>
+          <input matInput
+                 type="text"
+                 dateDirective
+                 formControlName="dataAlteracao">
+        </mat-form-field>
+
+        <mat-form-field fxFlex="55%"
+                        appearance="outline">
+          <mat-label>USUÁRIO DE ALTERAÇÃO</mat-label>
+          <input matInput
+                 type="text"
+                 readonly
+                 formControlName="usuarioAlteracao">
+        </mat-form-field>
+      </span>
+
+    </div>
+
+    <mat-divider class="w-100 mb-3"></mat-divider>
+
+    <div class="mt-3"
+         fxFlex="100%">
+      <button aria-label="voltar"
+              class="mr-3"
+              color="primary"
+              type="button"
+              mat-stroked-button
+              (click)="back()">
+        <mat-icon>keyboard_backspace</mat-icon>
+        VOLTAR
+      </button>
+
+      <button color="primary"
+              mat-raised-button
+              type="submit"
+              [disabled]="form.invalid">
+        <mat-icon>save</mat-icon>
+        SALVAR
+      </button>
+    </div>
+  </form>
+</section>

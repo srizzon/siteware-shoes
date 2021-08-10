@@ -1,0 +1,35 @@
+<section class="confirm-dialog">
+  <h1 mat-dialog-title
+      fxFlexAlign="start"
+      class="confirm-dialog__title">{{data.title}}</h1>
+  <div class="confirm-dialog__sub-title-box"
+       fxLayout="row"
+       fxLayoutAlign="space-between center">
+    <span class="confirm-dialog__sub-title-text">{{data.subtitle}}</span>
+  </div>
+  <div class="confirm-dialog__content"
+       fxLayout="column"
+       fxLayoutAlign="start start">
+    <span class="confirm-dialog__item"
+          *ngIf="data.descriptionFirst">{{data.descriptionFirst}}</span>
+    <span class="confirm-dialog__description"
+          *ngIf="data.descriptionSecond">{{data.descriptionSecond}}</span>
+  </div>
+  <mat-dialog-actions align="end"
+                      class="confirm-dialog__actions w-100"
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center">
+    <button class="confirm-dialog__cancel"
+            mat-dialog-close
+            mat-button
+            *ngIf="!data.onlyOkButton">Não</button>
+    <button [mat-dialog-close]="true"
+            class="confirm-dialog__confirm"
+            mat-raised-button
+            type="submit"
+            color="primary">
+      <mat-icon>check</mat-icon>
+      {{ data.onlyOkButton ? 'OK' : 'SIM' }}
+    </button>
+  </mat-dialog-actions>
+</section>

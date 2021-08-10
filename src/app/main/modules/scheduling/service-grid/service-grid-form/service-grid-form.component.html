@@ -1,0 +1,85 @@
+<section>
+
+  <app-header-inside-page> </app-header-inside-page>
+
+  <span class="sub-title mb-3">Selecione as Opções</span>
+
+  <form (ngSubmit)="onSubmit()"
+        [formGroup]="form"
+        fxLayout="column"
+        fxLayout.gt-sm="row layout-wrap"
+        fxLayoutAlign="start start"
+        fxLayoutGap="24px">
+
+    <div class="pos-relative"
+         fxFlex="30%">
+      <app-service-autocomplete class="auto-complete"
+                                formControlName="service"
+                                [fControl]="form.controls.service">
+      </app-service-autocomplete>
+    </div>
+
+    <mat-form-field appearance="outline"
+                    class="mb-1 filter__field">
+      <mat-label>QTD DIAS CONCLUSÃO</mat-label>
+
+      <input type="text"
+             matInput
+             formControlName="quantidadeDiasPrevistoConclusao" />
+    </mat-form-field>
+
+    <div fxFlex="30%"
+         class="ml-2">
+      <label class="w-100 d-block mb-2">TURNO</label>
+      <mat-radio-group formControlName="shift"
+                       color="primary"
+                       fxLayout="row"
+                       fxLayoutAlign="start center"
+                       fxLayoutGap="48px">
+        <mat-radio-button value="MANHA">
+          MANHÃ
+        </mat-radio-button>
+        <mat-radio-button value="TARDE">
+          TARDE
+        </mat-radio-button>
+        <mat-radio-button value="NOITE">
+          NOITE
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="90%"
+                    class="mb-3 filter__field">
+      <mat-label>DESCRIÇÃO</mat-label>
+
+      <input type="text"
+             matInput
+             formControlName="description" />
+    </mat-form-field>
+
+    <app-table-custom [tableData]="tableOrder"
+                      [data]="tableOrderData"
+                      fxFlex="48%"></app-table-custom>
+    <app-table-custom [tableData]="tableServiceGridDistribution"
+                      [data]="tableServiceGridDistributionData"
+                      fxFlex="48%"></app-table-custom>
+
+    <div class="w-100 mt-2">
+      <button aria-label="voltar"
+              class="mr-4"
+              color="primary"
+              mat-stroked-button
+              (click)="back()">
+        <mat-icon>keyboard_backspace</mat-icon>
+        VOLTAR
+      </button>
+      <button color="primary"
+              mat-raised-button
+              type="submit">
+        <mat-icon> save</mat-icon>
+        SALVAR
+      </button>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,60 @@
+<section class="reschedule-dialog">
+  <h1 mat-dialog-title
+      fxFlexAlign="start"
+      class="reschedule-dialog__title">Reagendar</h1>
+  <div class="reschedule-dialog__box"
+       fxLayout="column"
+       fxLayoutAlign="start start">
+    <span class="reschedule-dialog__box-type">{{data.tipo}}</span>
+    <span class="reschedule-dialog__box-model">{{data.schedule.modelo}}</span>
+    <span class="reschedule-dialog__box-schedule">{{data.schedule.agenda | dateAndTime}}</span>
+  </div>
+  <form [formGroup]="formReschedule"
+        class="reschedule-dialog__content"
+        fxLayout="row"
+        fxLayoutAlign="space-between start">
+    <div fxFlex="30%"
+         fxFlex.gt-lg="35%"
+         class="pos-relative">
+      <app-date-input class="auto-complete"
+                      formControlName="date"
+                      [label]="'NOVA DATA'"
+                      [fControl]="formReschedule.controls.date">
+      </app-date-input>
+    </div>
+    <!-- <div fxFlex="60%">
+      <label class="w-100 d-block mb-2">TURNO</label>
+      <mat-radio-group formControlName="turn"
+                       color="primary"
+                       fxLayout="row"
+                       fxLayoutAlign="start center"
+                       fxLayoutGap="24px">
+        <mat-radio-button value="MANHA">
+          MANHÃ
+        </mat-radio-button>
+        <mat-radio-button value="TARDE">
+          TARDE
+        </mat-radio-button>
+        <mat-radio-button value="NOITE">
+          NOITE
+        </mat-radio-button>
+      </mat-radio-group>
+    </div> -->
+  </form>
+  <mat-dialog-actions align="end"
+                      class="reschedule-dialog__actions w-100"
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center">
+    <button class="reschedule-dialog__cancel"
+            mat-dialog-close
+            mat-button>Reagendar Depois</button>
+    <button (click)="reschedule()"
+            class="reschedule-dialog__confirm"
+            mat-raised-button
+            type="submit"
+            color="primary">
+      <mat-icon>calendar_today</mat-icon>
+      REAGENDAR
+    </button>
+  </mat-dialog-actions>
+</section>

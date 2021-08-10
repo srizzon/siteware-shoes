@@ -1,0 +1,46 @@
+.audit-table {
+  border: 1px solid var(--primary);
+
+  &__cell {
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__status {
+    color: var(--white);
+    background-color: var(--primary);
+    &--paid {
+      background-color: var(--success);
+    }
+
+    &--unpaid {
+      background-color: var(--error);
+    }
+
+    &--waiting, &--new {
+      background-color: var(--primary);
+    }
+  }
+}
+
+.mat-table {
+  min-width: auto !important;
+  width: 100% !important;
+}
+
+// .mat-header-row {
+//   width: 100%;
+// }
+
+// .mat-row {
+//   width: 100%;
+// }
+
+.mat-cell {
+  font-size: 12px;
+}
+
+.mat-icon {
+  font-size: 24px !important;
+}

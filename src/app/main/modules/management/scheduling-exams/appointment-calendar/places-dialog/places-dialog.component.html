@@ -1,0 +1,28 @@
+<section class="locais-dialog">
+  <div fxLayout="row"
+       fxLayoutAlign="space-between center"
+       class="locais-dialog__title-box">
+    <h1 mat-dialog-title
+        fxFlexAlign="start"
+        class="locais-dialog__title">SELEÇÃO DE HORÁRIO</h1>
+    <button mat-mini-fab
+            matSuffix
+            color="primary"
+            aria-label="Buscar"
+            (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="locais-dialog__sub-title-box"
+       fxLayout="column"
+       fxLayoutAlign="center start">
+    <span class="locais-dialog__description">Exame: {{data.marcacao.descricaoExame}}</span>
+    <span class="locais-dialog__description">Local: {{data.marcacao.descricaoLocal}}</span>
+    <span class="locais-dialog__sub-title-text">Selecione um dos horários abaixo</span>
+  </div>
+  <mat-dialog-content>
+    <app-table-custom [tableData]="tabelaHorario"
+                      [data]="data.marcacao.horarios"
+                      class="pt-2"></app-table-custom>
+  </mat-dialog-content>
+</section>

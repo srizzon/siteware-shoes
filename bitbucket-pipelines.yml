@@ -1,0 +1,40 @@
+image: node:lts-alpine
+
+pipelines:
+  default:
+    - step:
+        name: Install
+        caches:
+         - node
+        script:
+          - npm install
+        artifacts:
+          - node_modules/**
+    - step:
+        name: Build
+        script:
+          - npm run build
+        artifacts:
+          - dist/**
+    - step:
+        name: Publish Release
+        script:
+          - echo "$(ls -la)"
+          - echo "$(ls -la dist)"
+          - echo "Generating images"
+          - docker image build --no-cache --force-rm -t cfcdigital_newimage $BITBUCKET_CLONE_DIR/.
+          - echo "Tagging image CFC_DIGITAL"
+          - docker image tag cfcdigital_newimage $DOCKER_HUB_REPOSITORY_ASA:cfcdigital_${BITBUCKET_BRANCH}_${BITBUCKET_BUILD_NUMBER}
+          - docker image tag cfcdigital_newimage $DOCKER_HUB_REPOSITORY_ASA:cfcdigital_${BITBUCKET_BRANCH}_LATEST
+          - echo "Logging into Docker Hub"
+          - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+          - echo "Pushing CFC_DIGITAL image to docker hub"
+          - docker push $DOCKER_HUB_REPOSITORY_ASA:cfcdigital_${BITBUCKET_BRANCH}_${BITBUCKET_BUILD_NUMBER}
+          - docker push $DOCKER_HUB_REPOSITORY_ASA:cfcdigital_${BITBUCKET_BRANCH}_LATEST
+        services:
+          - docker
+
+definitions:
+  services:
+    docker:
+      memory: 2048

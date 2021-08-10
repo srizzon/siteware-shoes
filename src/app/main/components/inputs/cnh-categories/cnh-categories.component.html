@@ -1,0 +1,13 @@
+<mat-form-field appearance="outline"
+                class="w-100"
+                [ngClass]="{'has-content' : this.fControl.value}">
+  <mat-label>CATEGORIA CNH</mat-label>
+
+  <mat-select [formControl]="fControl">
+    <mat-option *ngFor="let categories of cnhCategories"
+                [value]="categories.id">
+      {{categories.descricao}}
+    </mat-option>
+  </mat-select>
+
+</mat-form-field>

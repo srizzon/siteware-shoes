@@ -1,0 +1,149 @@
+<section class="product">
+  <app-header-inside-page> </app-header-inside-page>
+
+  <form [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        fxLayoutGap="24px"
+        fxLayout="row layout-wrap"
+        fxLayoutAlign="start start"
+        class="w-100 commissioning__data">
+
+
+    <h2 fxFlex="100%"
+        class="sub-title">CFC DO PRODUTO A SER CADASTRADO</h2>
+
+    <div class="pos-relative"
+         fxFlex="48%">
+      <app-cfc-autocomplete class="auto-complete"
+                            formControlName="cfc"
+                            [fControl]="form.controls.cfc">
+      </app-cfc-autocomplete>
+    </div>
+
+
+    <h2 fxFlex="100%"
+        class="sub-title">DADOS DO COMISSIONAMENTO</h2>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="30%"
+                    class="mb-3 filter__field">
+      <mat-label>EMPRESA</mat-label>
+      <mat-select formControlName="cnpjEmpresa">
+        <mat-option value="01706994000129">SINDAUTO</mat-option>
+        <mat-option value="03277890000171">RENOVA</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="30%"
+                    appearance="outline">
+      <mat-label>Produto</mat-label>
+      <mat-select formControlName="product"
+                  (selectionChange)="setProductData()">
+        <mat-option [value]="product.id"
+                    *ngFor="let product of products">
+          {{product.descricao}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="30%"
+                    appearance="outline">
+      <mat-label>Valor</mat-label>
+      <input formControlName="value"
+             matInput
+             currencyMask
+             [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+             type="text">
+    </mat-form-field>
+
+    <mat-divider class="w-100 mb-3"></mat-divider>
+
+    <h2 fxFlex="100%"
+        class="sub-title">Detalhes do Produto</h2>
+
+    <mat-form-field fxFlex="48%"
+                    appearance="outline">
+      <mat-label>Decrição</mat-label>
+      <input matInput
+             disabled
+             [value]="product.descricao" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="16%"
+                    appearance="outline">
+      <mat-label>Tipo de Produto</mat-label>
+      <input matInput
+             disabled
+             [value]="product.tipoProduto == 'A' ? 'AVULSO' : product.tipoProduto == 'P' ? 'PACOTE' : '-'" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="15%"
+                    appearance="outline">
+      <mat-label>Quantidade</mat-label>
+      <input matInput
+             disabled
+             [value]="product.quantidade" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="15%"
+                    appearance="outline">
+      <mat-label>Market</mat-label>
+      <input matInput
+             disabled
+             [value]="product.market ? 'Sim' : 'Não'" />
+    </mat-form-field>
+
+
+    <mat-form-field fxFlex="15%"
+                    appearance="outline">
+      <mat-label>Valor Padrão</mat-label>
+      <input matInput
+             disabled
+             [value]="product.valorPadrao"
+             currencyMask
+             [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+             type="text" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="15%"
+                    appearance="outline">
+      <mat-label>Valor Mínimo</mat-label>
+      <input matInput
+             disabled
+             [value]="product.valorMinimo"
+             currencyMask
+             [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+             type="text" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="15%"
+                    appearance="outline">
+      <mat-label>Margem de Lucro</mat-label>
+      <input matInput
+             disabled
+             [value]="product.margemLucro" />
+    </mat-form-field>
+
+    <mat-divider class="w-100 mb-3"></mat-divider>
+
+    <div class="mt-3"
+         fxFlex="100%">
+      <button aria-label="voltar"
+              class="mr-3"
+              color="primary"
+              mat-stroked-button
+              type="button"
+              (click)="back()">
+        <mat-icon>keyboard_backspace</mat-icon>
+        VOLTAR
+      </button>
+
+      <button mat-raised-button
+              type="submit"
+              color="primary">
+        <mat-icon>save</mat-icon>
+        SALVAR
+      </button>
+    </div>
+  </form>
+</section>

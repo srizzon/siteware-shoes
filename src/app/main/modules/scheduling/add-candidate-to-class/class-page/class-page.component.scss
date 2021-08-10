@@ -1,0 +1,103 @@
+:host {
+  .class-page {
+    &__candidates {
+      border-right: 1px solid var(--secondary-rgb);
+      .table-custom__title-text {
+        display: none;
+      }
+    }
+
+    &__box-class {
+      &__vacancy {
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 14px;
+        line-height: 120%;
+        color: var(--gray-light);
+      }
+
+      &__quantity {
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 48px;
+        line-height: 120%;
+        color: var(--success);
+      }
+
+      &__class {
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 120%;
+        color: var(--primary);
+      }
+
+      &__instructor {
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 120%;
+        color: var(--text-color);
+      }
+
+      &__date {
+        font-family: Avenir;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 120%;
+        color: var(--text-color);
+      }
+    }
+  }
+
+  ::ng-deep {
+    .table-enrrolment-class-page {
+      padding: 0 0 20px 0 !important;
+      .table-custom {
+        &__title-text {
+          display: none !important;
+        }
+        &__title-right {
+          max-width: 100% !important;
+          justify-content: center !important;
+        }
+
+      }
+    }
+    .table-custom__title {
+      padding: 0 !important;
+    }
+
+    .table-custom__title-right {
+      display: none;
+    }
+
+    .mat-table {
+      .mat-row {
+        .table-custom__button-icon {
+          background-color: transparent !important;
+          color: var(--secondary) !important;
+        }
+
+        &:hover {
+          .table-custom__button-icon {
+            background-color: transparent !important;
+            color: var(--primary) !important;
+          }
+        }
+
+        .mat-column {
+          &-nome { width: 60% ;}
+          &-cpf { width: 20;}
+          &-actions { width: 20%;}
+          &-candidate { width: 80%;}
+        }
+      }
+    }
+  }
+}

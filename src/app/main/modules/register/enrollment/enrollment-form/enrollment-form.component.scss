@@ -1,0 +1,26 @@
+:host {
+    .candidate {
+      &__data {
+        border-right: 1px solid var(--secondary);
+      }
+  
+      &__avatar {
+        border: 1px solid var(--primary);
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+  
+        &:hover {
+          cursor: pointer;
+        }
+  
+        &-image {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+        }
+      }
+  
+    }
+  }
+  

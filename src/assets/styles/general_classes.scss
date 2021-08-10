@@ -1,0 +1,82 @@
+.custom-container {
+  .mat-dialog-container {
+    padding: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: var(--primary);
+}
+
+.container {
+  padding: 24px 48px;
+}
+
+.title {
+  color: var(--primary);
+  font-size: 36px;
+}
+
+.sub-title {
+  display: block;
+  color: var(--primary);
+  font-size: 20px;
+}
+
+.mat-icon {
+  font-size: 24px !important;
+}
+
+.generic-info {
+  color: var(--text-color) !important;
+
+  &__title {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    line-height: 25px !important;
+    margin: 0 !important;
+  }
+
+  &__text {
+    font-weight: normal !important;
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+}
+
+.auto-complete+ng-component .message-error {
+  left: 0px;
+  top: 62px;
+}
+
+.autocomplete-icon-select {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mat-divider {
+  border-color: var(--primary) !important;
+}

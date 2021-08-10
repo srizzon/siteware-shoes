@@ -1,0 +1,33 @@
+:host {
+  .acd {
+    &__box-left {
+      border-right: 1px solid var(--secondary);
+    }
+    .mat-icon {
+      font-size: 24px !important;
+    }
+
+    &__class-table {
+      margin: 0 auto;
+      border: 1px solid var(--secondary) !important;
+      border-radius: 15px;
+      color: var(--primary);
+      padding: 20px 0;
+      &-curso {
+        width: 80%;
+        padding-top: 10px;
+      }
+    }
+  }
+
+  ::ng-deep {
+    .mat-column {
+      &-nroAula { width: 20%; }
+      &-curso { width: 25%; }
+      &-conteudoProgramatico { width: 25%; }
+      &-data { width: 10%; }
+      &-inicio { width: 10%; }
+      &-fim { width: 10%; }
+    }
+  }
+}

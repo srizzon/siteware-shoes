@@ -1,0 +1,47 @@
+<div>
+  <div class="header-menu p-4"
+       fxLayout="row layout-wrap"
+       fxLayoutAlign="start flex-start">
+    <div *ngFor="let item of menus; index as i"
+         fxFlex="33%"
+         (click)="onMenuClick(i, 0)">
+      <div class="header-menu__item mb-3">
+        <div #firstRow
+             class="header-menu__wrapper"
+             fxLayoutAlign="center center">
+          <div class="header-menu__front mb-3"
+               fxLayoutAlign="center center">
+            <div class="header-menu__header"
+                 fxLayout="column"
+                 fxLayoutAlign="center center">
+              <div class="header-menu__icon"
+                   fxLayoutAlign="center center">
+                <mat-icon class="header-menu__icon--mat">{{item?.icon}}</mat-icon>
+              </div>
+              <div class="header-menu__name mt-2">{{item?.name}}</div>
+            </div>
+          </div>
+          <div class="header-menu__back mb-3"
+               fxLayout="column">
+            <div class="header-menu__back-title mb-3"
+                 fxLayout="row"
+                 fxLayoutAlign="start center">
+              <mat-icon class="header-menu__back-icon mr-2">{{item?.icon}}</mat-icon>
+              <div>{{item?.name}}</div>
+            </div>
+            <div *ngFor="let submenu of item?.submenus"
+                 class="mb-2">
+              <a *ngIf="!submenu.type"
+                 [routerLink]="[ submenu?.route ]"
+                 class="header-menu__submenu">{{submenu?.name}}</a>
+              <a *ngIf="submenu.type == 'external'"
+                 [href]="submenu?.route"
+                 target="_blank"
+                 class="header-menu__submenu">{{submenu?.name}}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<mat-form-field appearance="outline"
+                class="w-100"
+                [ngClass]="{'has-content' : this.fControl.value}">
+  <mat-label>SERVIÇOS</mat-label>
+  <input type="text"
+         placeholder="Serviços"
+         aria-label="Serviços"
+         matInput
+         [formControl]="fControl"
+         [matAutocomplete]="auto">
+  <mat-icon class="autocomplete-icon-select"
+            *ngIf="!this.fControl.value"
+            matSuffix>keyboard_arrow_down</mat-icon>
+
+  <mat-icon class="autocomplete-icon-select"
+            *ngIf="this.fControl.value"
+            (click)="clear($event)"
+            matSuffix>clear</mat-icon>
+
+  <mat-autocomplete #auto="matAutocomplete"
+                    [displayWith]="getName"
+                    appearance="outline">
+    <mat-option *ngFor="let item of filtered | async"
+                [value]="item">
+      {{item.nome}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

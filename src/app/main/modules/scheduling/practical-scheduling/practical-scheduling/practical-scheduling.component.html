@@ -1,0 +1,209 @@
+<app-header-inside-page> </app-header-inside-page>
+<app-header-buttons [buttons]="buttons"
+                    [disabled]="disabled"
+                    [object]="schedulePratical"
+                    [valid]="form.valid"
+                    [enableHeader]="false"
+                    (buttonsEmmiter)="buttonsActions($event)">
+  <div>
+    <button *ngIf="schedulePratical.id && !rescheduleStatus && !updateStatus"
+            aria-label="Reagendar"
+            class="mr-4"
+            color="primary"
+            mat-raised-button
+            matSuffix
+            (click)="reschedule()">
+      <mat-icon>published_with_changes</mat-icon>
+      REAGENDAR
+    </button>
+    <button *ngIf="!schedulePratical.id"
+            aria-label="Limpar Dados"
+            mat-raised-button
+            matSuffix
+            color="primary"
+            [disabled]="!form.get('aluno').value"
+            (click)="clear()">
+      <mat-icon>clear</mat-icon>
+      Limpar Dados
+    </button>
+  </div>
+</app-header-buttons>
+
+<div fxLayout="row layout-wrap"
+     fxLayoutAlign="start start"
+     class="w-100">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Renach</mat-label>
+    <input matInput
+           type="text"
+           minlength="11"
+           maxlength="11"
+           [formControl]="formRenach">
+    <button *ngIf="formRenach.value != '' && !schedulePratical.id"
+            matSuffix
+            class="mr-2"
+            mat-icon-button
+            aria-label="Limpar"
+            (click)="clear()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </mat-form-field>
+  <button *ngIf="formRenach.value != '' && !form.get('aluno').value"
+          aria-label="Buscar"
+          mat-raised-button
+          matSuffix
+          color="primary"
+          class="ml-2 mt-3"
+          [disabled]="formRenach.value.length < 11"
+          (click)="findCandidate()">
+    <mat-icon>search</mat-icon>
+    BUSCAR
+  </button>
+</div>
+
+<form [ngStyle]="cargaRenach.candidatoId == null ? {'display': 'none'} : {'display': 'flex'}"
+      [formGroup]="form"
+      class="mt-2"
+      fxLayout="row layout-wrap"
+      fxLayoutAlign="space-between start">
+  <mat-form-field appearance="outline"
+                  fxFlex="57%">
+    <mat-label>Aluno</mat-label>
+    <input matInput
+           type="text"
+           formControlName="aluno">
+  </mat-form-field>
+  <mat-form-field appearance="outline"
+                  fxFlex="20%">
+    <mat-label>CPF</mat-label>
+    <input matInput
+           type="text"
+           [mask]="'000.000.000-00'"
+           formControlName="cpf">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline"
+                  fxFlex="20%">
+    <mat-label>CATEGORIA</mat-label>
+    <mat-select formControlName="categoria">
+      <mat-option [value]="category"
+                  *ngFor="let category of categories">
+        {{category}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div [ngStyle]="!this.form.get('categoria').value ? {'display': 'none'} : {'display': 'flex'}"
+       fxLayout="row layout-wrap"
+       fxLayoutAlign="start start"
+       fxLayoutGap="24px"
+       fxFlex="100%">
+
+    <span class="w-100 mb-1"
+          *ngIf="!schedulePratical.id">
+      <h1 class="generic-info__title">Seleção de Local, data e hora</h1>
+      <h2 class="generic-info__text">Clique no botão <strong>PESQUISAR DATA E HORA</strong> para ver os horários
+        disponíveis para seleção.</h2>
+    </span>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="15%">
+      <mat-label>DATA</mat-label>
+      <input matInput
+             type="text"
+             formControlName="data">
+    </mat-form-field>
+    <mat-form-field appearance="outline"
+                    fxFlex="15%">
+      <mat-label>HORÁRIO</mat-label>
+      <input matInput
+             type="text"
+             formControlName="horario">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="15%">
+      <mat-label>VEÍCULO</mat-label>
+      <input matInput
+             type="text"
+             formControlName="veiculo">
+    </mat-form-field>
+
+    <div class="pos-relative"
+         fxFlex="39%">
+      <app-instructor-autocomplete class="auto-complete"
+                                   formControlName="instrutor"
+                                   [fControl]="form.controls.instrutor">
+      </app-instructor-autocomplete>
+    </div>
+    <button *ngIf="!schedulePratical.id"
+            aria-label="Buscar"
+            class="mt-3"
+            color="primary"
+            mat-stroked-button
+            matSuffix
+            [disabled]="!form.get('categoria').value"
+            (click)="showCalendar($event)">
+      <mat-icon>search</mat-icon>
+      PESQUISAR DATA E HORA
+    </button>
+  </div>
+
+  <div *ngIf="schedulePratical.id && (rescheduleStatus || updateStatus)"
+       fxLayout="row layout-wrap"
+       fxLayoutAlign="start start"
+       fxLayoutGap="24px"
+       fxFlex="100%">
+
+    <div fxFlex="100%">
+      <h1 *ngIf="rescheduleStatus"
+          class="w-100 generic-info__title">Reagendamento</h1>
+      <h1 *ngIf="updateStatus"
+          class="w-100 generic-info__title">Alterar Agendamento</h1>
+      <span class="w-100 generic-info__text">Clique no botão <strong>PESQUISAR DATA E HORA</strong> para ver os horários
+        disponíveis</span>
+    </div>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="15%">
+      <mat-label>DATA</mat-label>
+      <input matInput
+             type="text"
+             formControlName="novaData">
+    </mat-form-field>
+    <mat-form-field appearance="outline"
+                    fxFlex="15%">
+      <mat-label>HORÁRIO</mat-label>
+      <input matInput
+             type="text"
+             formControlName="novoHorario">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="15%">
+      <mat-label>VEÍCULO</mat-label>
+      <input matInput
+             type="text"
+             formControlName="novoVeiculo">
+    </mat-form-field>
+
+    <div class="pos-relative"
+         fxFlex="39%">
+      <app-instructor-autocomplete class="auto-complete"
+                                   formControlName="novoInstrutor"
+                                   [fControl]="form.controls.novoInstrutor">
+      </app-instructor-autocomplete>
+    </div>
+    <button aria-label="Buscar"
+            class="mt-3"
+            color="primary"
+            mat-stroked-button
+            matSuffix
+            [disabled]="!form.get('categoria').value"
+            (click)="showCalendar($event)">
+      <mat-icon>search</mat-icon>
+      PESQUISAR DATA E HORA
+    </button>
+  </div>
+</form>

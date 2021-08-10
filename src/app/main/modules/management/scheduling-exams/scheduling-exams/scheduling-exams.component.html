@@ -1,0 +1,236 @@
+<app-header-inside-page> </app-header-inside-page>
+<app-header-buttons [buttons]="buttons"
+                    [disabled]="disabled"
+                    [object]="marcacaoExame"
+                    [valid]="form.valid"
+                    [enableHeader]="false"
+                    (buttonsEmmiter)="buttonsActions($event)">
+  <div>
+    <button *ngIf="marcacaoExameHorario.idLocal && rescheduleStatus"
+            aria-label="Reagendar"
+            class="mt-3"
+            color="primary"
+            mat-raised-button
+            matSuffix
+            [disabled]="form.invalid"
+            (click)="reschedule()">
+      <mat-icon>published_with_changes</mat-icon>
+      REAGENDAR
+    </button>
+    <button aria-label="Limpar Dados"
+            *ngIf="!marcacaoExame.id"
+            mat-raised-button
+            matSuffix
+            class="mr-4"
+            color="primary"
+            [disabled]="!form.get('aluno').value"
+            (click)="clear()">
+      <mat-icon>clear</mat-icon>
+      LIMPAR DADOS
+    </button>
+    <button *ngIf="marcacaoExame.id &&  marcacaoExame.situacao == 'AGENDADO'"
+            aria-label="Reagendar"
+            mat-raised-button
+            matSuffix
+            color="primary"
+            (click)="delete()">
+      <mat-icon>clear</mat-icon>
+      CANCELAR AGENDAMENTO
+    </button>
+  </div>
+</app-header-buttons>
+
+
+<mat-form-field appearance="outline">
+  <mat-label>Renach</mat-label>
+  <input matInput
+         type="text"
+         minlength="11"
+         maxlength="11"
+         [readonly]="rescheduleStatus"
+         [formControl]="formRenach">
+  <button *ngIf="formRenach.value != '' && !rescheduleStatus"
+          matSuffix
+          class="mr-2"
+          mat-icon-button
+          aria-label="Limpar"
+          (click)="clear()">
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-form-field>
+
+<button *ngIf="formRenach.value && marcacaoExame.candidatoId == null"
+        aria-label="Buscar"
+        mat-raised-button
+        matSuffix
+        color="primary"
+        class="ml-2 mt-3"
+        [disabled]="formRenach.value.length < 11"
+        (click)="buscarCandidato()">
+  <mat-icon>search</mat-icon>
+  BUSCAR
+</button>
+
+<form [ngStyle]="marcacaoExame.candidatoId == null ? {'display': 'none'} : {'display': 'flex'}"
+      [formGroup]="form"
+      fxLayout="row layout-wrap"
+      fxLayoutAlign="start start"
+      fxLayoutGap="24px">
+
+  <mat-form-field appearance="outline"
+                  fxFlex="10%"
+                  *ngIf="marcacaoExame.id">
+    <mat-label>SITUAÇÃO</mat-label>
+    <input matInput
+           type="text"
+           formControlName="situacao">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline"
+                  fxFlex="44%">
+    <mat-label>Aluno</mat-label>
+    <input matInput
+           type="text"
+           formControlName="aluno">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline"
+                  fxFlex="18%">
+    <mat-label>CPF</mat-label>
+    <input matInput
+           type="text"
+           [mask]="'000.000.000-00'"
+           formControlName="cpf">
+  </mat-form-field>
+
+  <div class="pos-relative"
+       fxFlex="18%">
+    <app-tipo-de-exame class="auto-complete"
+                       formControlName="tipoSolicitacao"
+                       [fControl]="form.controls.tipoSolicitacao">
+    </app-tipo-de-exame>
+  </div>
+
+  <div class="pos-relative"
+       fxFlex="20%"
+       *ngIf="this.form.get('tipoSolicitacao').value && this.form.get('tipoSolicitacao').value.id != 1">
+    <app-veiculo-cfc-autocomplete class="auto-complete"
+                                  formControlName="veiculo"
+                                  [fControl]="form.controls.veiculo">
+    </app-veiculo-cfc-autocomplete>
+  </div>
+
+  <div class="pos-relative"
+       fxFlex="42%"
+       *ngIf="this.form.get('tipoSolicitacao').value && this.form.get('tipoSolicitacao').value.id != 1">
+    <app-instructor-autocomplete class="auto-complete"
+                                 formControlName="instrutor"
+                                 [fControl]="form.controls.instrutor">
+    </app-instructor-autocomplete>
+  </div>
+
+  <div *ngIf="this.form.get('tipoSolicitacao').value"
+       fxLayout="row layout-wrap"
+       fxLayoutAlign="start start"
+       fxLayoutGap="24px"
+       fxFlex="100%">
+
+    <span class="w-100 mb-1"
+          *ngIf="!marcacaoExame.id">
+      <h1 class="generic-info__title">Seleção de Local, data e hora</h1>
+      <h2 class="generic-info__text">Clique no botão <strong>PESQUISAR DATA E HORA</strong> para ver os horários
+        disponíveis para seleção.</h2>
+    </span>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="37.3%">
+      <mat-label>LOCAL</mat-label>
+      <input matInput
+             readonly
+             type="text"
+             formControlName="local">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="10%">
+      <mat-label>DATA</mat-label>
+      <input matInput
+             type="text"
+             readonly
+             formControlName="data">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="10%">
+      <mat-label>HORÁRIO</mat-label>
+      <input matInput
+             readonly
+             type="text"
+             formControlName="horario">
+    </mat-form-field>
+
+    <button *ngIf="!marcacaoExame.id"
+            aria-label="Buscar"
+            class="mt-3"
+            color="primary"
+            mat-stroked-button
+            matSuffix
+            (click)="exibirCalendario($event)">
+      <mat-icon>search</mat-icon>
+      PESQUISAR DATA E HORA
+    </button>
+  </div>
+
+
+  <div *ngIf="marcacaoExame.id && marcacaoExame.situacao == 'CONFIRMADO'"
+       fxLayout="row layout-wrap"
+       fxLayoutAlign="start start"
+       fxLayoutGap="24px"
+       fxFlex="100%">
+
+    <div fxFlex="100%">
+      <h1 class="w-100 generic-info__title">Reagendamento</h1>
+      <span class="w-100 generic-info__text">Clique no botão <strong>PESQUISAR DATA E HORA</strong> para ver os
+        horários
+        disponíveis para realizar o <strong>reagendamento.</strong></span>
+    </div>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="37.3%">
+      <mat-label>LOCAL</mat-label>
+      <input matInput
+             type="text"
+             readonly
+             formControlName="novoLocal">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline"
+                    fxFlex="10%">
+      <mat-label>DATA</mat-label>
+      <input matInput
+             type="text"
+             readonly
+             formControlName="novaData">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline"
+                    fxFlex="10%">
+      <mat-label>HORÁRIO</mat-label>
+      <input matInput
+             readonly
+             type="text"
+             formControlName="novoHorario">
+    </mat-form-field>
+
+    <button aria-label="Buscar"
+            class="mt-3"
+            color="primary"
+            mat-stroked-button
+            matSuffix
+            (click)="exibirCalendario($event)">
+      <mat-icon>search</mat-icon>
+      PESQUISAR DATA E HORA
+    </button>
+  </div>
+</form>

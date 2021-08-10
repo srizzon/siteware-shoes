@@ -1,0 +1,116 @@
+<section class="bank">
+  <app-header-inside-page> </app-header-inside-page>
+
+  <form [formGroup]="formBank"
+        fxLayout="row layout-wrap"
+        fxLayoutAlign="start start"
+        fxLayoutGap="24px"
+        class="w-100">
+
+    <h2 fxFlex="100%"
+        class="sub-title">DADOS DA CONTA</h2>
+
+    <div class="pos-relative"
+         fxFlex="30%">
+      <app-cfc-autocomplete class="auto-complete"
+                            formControlName="cfc"
+                            [fControl]="formBank.controls.cfc">
+      </app-cfc-autocomplete>
+    </div>
+
+    <mat-form-field fxFlex="30"
+                    appearance="outline">
+      <mat-label>USUÁRIO INTEGRAÇÃO</mat-label>
+      <input matInput
+             formControlName="usuarioIntegracao" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="32.8"
+                    appearance="outline">
+      <mat-label>SENHA INTEGRAÇÃO</mat-label>
+      <input matInput
+             formControlName="senhaIntegracao" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="30"
+                    appearance="outline">
+      <mat-label>CLIENTE ID</mat-label>
+      <input matInput
+             formControlName="clientId" />
+    </mat-form-field>
+
+
+    <mat-form-field fxFlex="30%"
+                    appearance="outline">
+      <mat-label>BANCO</mat-label>
+      <mat-select formControlName="bancoId">
+        <mat-option *ngFor="let bank of banks"
+                    [value]="bank.id">
+          {{bank.descricao}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="16.5%"
+                    appearance="outline">
+      <mat-label>AGÊNCIA</mat-label>
+      <input matInput
+             formControlName="agencia" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="15%"
+                    appearance="outline">
+      <mat-label>CONTA</mat-label>
+      <input matInput
+             formControlName="conta" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="85.5%"
+                    appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <input matInput
+             formControlName="descricao" />
+    </mat-form-field>
+
+    <span fxFlex="10%"
+          class="mt-3">
+      <mat-checkbox color="primary"
+                    formControlName="marketPlace">MarketPlace</mat-checkbox>
+    </span>
+
+    <div class="mt-3"
+         fxFlex="100%">
+      <button aria-label="voltar"
+              class="mr-3"
+              color="primary"
+              mat-stroked-button
+              type="button"
+              (click)="back()">
+        <mat-icon>keyboard_backspace</mat-icon>
+        VOLTAR
+      </button>
+
+      <button *ngIf="account.id"
+              aria-label="Editar Conta"
+              color="primary"
+              mat-raised-button
+              matSuffix
+              [disabled]="formBank.invalid"
+              (click)="edit()">
+        <mat-icon>save</mat-icon>
+        SALVAR
+      </button>
+
+      <button *ngIf="!account.id"
+              aria-label="Adicionar Conta"
+              color="primary"
+              mat-raised-button
+              matSuffix
+              [disabled]="formBank.invalid"
+              (click)="add()">
+        <mat-icon>save</mat-icon>
+        ADICIONAR
+      </button>
+    </div>
+  </form>
+</section>

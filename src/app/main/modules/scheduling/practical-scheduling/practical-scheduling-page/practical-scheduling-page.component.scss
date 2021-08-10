@@ -1,0 +1,26 @@
+:host {
+  .mat-table {
+    .mat-row {
+      .mat-column {
+        &-vehicle {
+          width: 10vw;
+        }
+        &-instructor {
+          width: 30vw;
+        }
+        &-studentEnrollment {
+          width: 30vw;
+        }
+        &-dateTime {
+          width: 10vw;
+        }
+        &-enabled {
+          width: 10vw;
+        }
+        &-actions {
+          width: 10vw;
+        }
+      }
+    }
+  }
+}

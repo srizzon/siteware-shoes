@@ -1,0 +1,30 @@
+:host {
+    .info {
+      color: var(--text-color);
+  
+      &__title {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 25px;
+        margin: 0;
+      }
+  
+      &__text {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+  
+    .filter {
+      &__field {
+        width: calc(25% - 42px);
+      }
+    }
+  
+    .button {
+      width: 283px;
+      height: 56px;
+    }
+  }
+  

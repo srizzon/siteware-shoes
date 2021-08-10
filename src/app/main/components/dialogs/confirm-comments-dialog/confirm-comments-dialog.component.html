@@ -1,0 +1,42 @@
+<section class="new-confirm-dialog">
+  <h1 mat-dialog-title
+      fxFlexAlign="start"
+      class="new-confirm-dialog__title">{{data.title}}</h1>
+  <div class="new-confirm-dialog__sub-title-box"
+       fxLayout="row"
+       fxLayoutAlign="space-between center">
+    <span class="new-confirm-dialog__sub-title-text">{{data.text}}</span>
+  </div>
+  <div class="new-confirm-dialog__content"
+       fxLayout="column"
+       fxLayoutAlign="start start">
+    <form [formGroup]="form"
+          class="w-100"
+          style="padding-top: 20px;">
+      <mat-form-field class="w-100">
+        <mat-label>MOTIVO</mat-label>
+        <input matInput
+               formControlName="comments"
+               required>
+      </mat-form-field>
+    </form>
+  </div>
+  <mat-dialog-actions align="end"
+                      class="new-confirm-dialog__actions w-100"
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center">
+    <button class="new-confirm-dialog__cancel"
+            mat-dialog-close
+            mat-button>CANCELAR</button>
+    <button class="mr-3"
+            color="primary"
+            mat-raised-button
+            type="submit"
+            (click)="fillComments()"
+            [mat-dialog-close]="data"
+            [disabled]="form.invalid">
+      <mat-icon>save</mat-icon>
+      SALVAR
+    </button>
+  </mat-dialog-actions>
+</section>

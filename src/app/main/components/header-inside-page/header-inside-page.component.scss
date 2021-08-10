@@ -1,0 +1,16 @@
+.generic-info {
+  color: var(--text-color) !important;
+
+  &__title {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    line-height: 25px !important;
+    margin: 0 !important;
+  }
+
+  &__text {
+    font-weight: normal !important;
+    font-size: 14px !important;
+    line-height: 19px !important;
+  }
+}

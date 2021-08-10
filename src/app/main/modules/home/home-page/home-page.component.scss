@@ -1,0 +1,9 @@
+.home {
+  color: var(--primary);
+  &__welcome {
+    font-size: 32px;
+  }
+  &__user {
+    font-size: 18px;
+  }
+}

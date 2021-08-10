@@ -1,0 +1,12 @@
+<div class="bank-account-table">
+  <app-header-inside-page>
+    <button mat-raised-button
+            color="primary"
+            (click)="addBankAccount()">
+      <mat-icon>check</mat-icon>
+      ADICIONAR CONTA CORRENTE
+    </button>
+  </app-header-inside-page>
+
+  <app-table-custom [tableData]="tableData"></app-table-custom>
+</div>

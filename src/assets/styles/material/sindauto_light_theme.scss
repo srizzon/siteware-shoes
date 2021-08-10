@@ -1,0 +1,110 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+$red-primary: (50 : #f2e5e4,
+  100 : #e0bfbb,
+  200 : #cb948d,
+  300 : #b6695f,
+  400 : #a6483d,
+  500 : #96281b,
+  600 : #8e2418,
+  700 : #831e14,
+  800 : #791810,
+  900 : #680f08,
+  A100 : #ff9e99,
+  A200 : #ff6d66,
+  A400 : #ff3c33,
+  A700 : #ff241a,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  ));
+
+$red-secondary: (50 : #fbe5e4,
+  100 : #f4bdbb,
+  200 : #ed928d,
+  300 : #e5665f,
+  400 : #e0453d,
+  500 : #da241b,
+  600 : #d62018,
+  700 : #d01b14,
+  800 : #cb1610,
+  900 : #c20d08,
+  A100 : #ffedec,
+  A200 : #ffbab9,
+  A400 : #ff8886,
+  A700 : #ff6f6d,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  ));
+
+$sindauto-primary: mat-palette($red-primary);
+$sindauto-accent: mat-palette($red-secondary, A200, A100, A400);
+$sindauto-warn: mat-palette($mat-red);
+
+@import 'src/assets/fonts/fonts.scss';
+
+$sindauto-theme: mat-light-theme((color: (primary: $sindauto-primary, accent: $sindauto-accent, warn: $sindauto-warn),
+  ));
+
+$custom-typography: mat-typography-config($font-family: 'Avenir',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500));
+
+@include angular-material-theme($sindauto-theme);
+@include angular-material-typography($custom-typography);
+
+@import './mat-button.scss';
+@import './mat-form-field.scss';
+@import './mat-select.scss';
+
+:root {
+  --white: #FFFFFF;
+  --primary: #96281b;
+  --primary-rgb: 150, 40, 27;
+  --primary-light: #F4F4F4;
+  --secondary: #da241b;
+  --secondary-rgb: 218, 36, 27;
+  --success: #4CAF50;
+  --warning: #FFC107;
+  --info: #2196F3;
+  --error: #F44336;
+  --text-color: #414141;
+  --gray-light: #BDBDBD;
+}
+
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: Avenir, Roboto, "Helvetica Neue", sans-serif;
+  color: var(--text-color)
+}

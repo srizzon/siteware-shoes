@@ -1,0 +1,9 @@
+:host {
+  ::ng-deep {
+    .cfc {
+      .hip, .hip__back {
+        display: none !important;
+      }
+    }
+  }
+}

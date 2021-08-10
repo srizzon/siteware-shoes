@@ -1,0 +1,19 @@
+<section>
+  <app-header-inside-page>
+    <button mat-raised-button
+            color="primary"
+            (click)="add()">
+      <mat-icon>add_circle_outline</mat-icon>
+      NOVO TIPO DE LANÇAMENTO
+    </button>
+  </app-header-inside-page>
+
+  <app-table-custom-pagination (paginatorEmitter)="changePaginator($event)">
+    <button mat-raised-button
+            color="primary"
+            (click)="showFilter()">
+      <mat-icon>search</mat-icon>
+      FILTROS
+    </button>
+  </app-table-custom-pagination>
+</section>

@@ -1,0 +1,80 @@
+export class CfcModel {
+  associado?: boolean;
+  ativo?: true;
+  bairro?: string;
+  cidade?: string;
+  cep?: string;
+  classificacao?: number;
+  cnpj?: string;
+  codCfcDetran?: number;
+  codFilialDetran?: string;
+  complemento?: string;
+  dataAlteracao?: any;
+  dataDiario?: any;
+  dataCadastro?: any;
+  dataValidade?: any;
+  emailContato?: string;
+  emailFaturamento?: string;
+  estado?: string;
+  id?: number;
+  latitude?: number
+  logradouro?: string;
+  longitude?: number;
+  matriz?: boolean;
+  nome?: string;
+  nomeFantasia?: string;
+  numero?: string;
+  portaria?: string;
+  processo?: string;
+  razaoSocial?: string;
+  relatorioMarcacaoExame?: boolean;
+  marcacaoExame?: boolean;
+  statusDetranId?: number;
+  telefone?: string;
+  unidadeDetranId?: number;
+  unidadeDetranDescricao?: string;
+  usuarioAlteracao?: string;
+  usuarioCadastro?: string;
+  usuarioReuniaoOnline?: string;
+  constructor(
+    options: CfcModel = {}
+  ) {
+    this.associado = options.associado || null;
+    this.ativo = options.ativo || null;
+    this.bairro = options.bairro || null;
+    this.cep = options.cep || null;
+    this.cidade = options.cidade || null;
+    this.classificacao = options.classificacao || null;
+    this.estado = options.estado || null;
+    this.cnpj = options.cnpj || null;
+    this.codCfcDetran = options.codCfcDetran || null;
+    this.complemento = options.complemento || null;
+    this.dataDiario = options.dataDiario || null;
+    this.codFilialDetran = options.codFilialDetran || null;
+    this.dataAlteracao = options.dataAlteracao || null;
+    this.dataCadastro = options.dataCadastro || null;
+    this.dataValidade = options.dataValidade || null;
+    this.emailContato = options.emailContato || null;
+    this.emailFaturamento = options.emailFaturamento || null;
+    this.id = options.id || null;
+    this.latitude = options.latitude || null;
+    this.logradouro = options.logradouro || null;
+    this.longitude = options.longitude || null;
+    this.matriz = options.matriz || null;
+    this.nomeFantasia = options.nomeFantasia || null;
+    this.nome = options.nome || null;
+    this.numero = options.numero || null;
+    this.portaria = options.portaria || null;
+    this.processo = options.processo || null;
+    this.razaoSocial = options.razaoSocial || null;
+    this.telefone = options.telefone || null;
+    this.statusDetranId = options.statusDetranId || null;
+    this.unidadeDetranId = options.unidadeDetranId || null;
+    this.unidadeDetranDescricao == options.unidadeDetranDescricao || null;
+    this.usuarioAlteracao = options.usuarioAlteracao || null;
+    this.usuarioCadastro = options.usuarioCadastro || null;
+    this.usuarioReuniaoOnline = options.usuarioReuniaoOnline || null;
+    this.relatorioMarcacaoExame = options.relatorioMarcacaoExame || null;
+    this.marcacaoExame = options.marcacaoExame || null;
+  }
+}

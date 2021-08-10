@@ -1,0 +1,33 @@
+<div class="image-cropp">
+  <h1 color="primary">Selecionar Foto</h1>
+  <input #input
+         type="file"
+         style="visibility: hidden;"
+         class="input-crop"
+         (change)="onFileChange($event)" />
+  <image-cropper format="png"
+                 [imageChangedEvent]="imageEvent"
+                 [maintainAspectRatio]="true"
+                 [aspectRatio]="1/1"
+                 [resizeToWidth]="150"
+                 [roundCropper]="true"
+                 (imageCropped)="onBase64($event)"
+                 (imageLoaded)="onSelected()"
+                 (loadImageFailed)="onImageFiled()"
+                 [style.display]="selected ? 'block' : 'none'"
+                 style="max-height: 400px; overflow-y: scroll;"
+                 ></image-cropper>
+  <div class="button mt-3">
+    <button [disabled]="!selected"
+            color="primary"
+            class="mr-2"
+            mat-raised-button
+            (click)="ok()">
+      CARREGAR FOTO
+    </button>
+    <button mat-stroked-button
+            (click)="selectImage()">
+      SELECIONAR
+    </button>
+  </div>
+</div>

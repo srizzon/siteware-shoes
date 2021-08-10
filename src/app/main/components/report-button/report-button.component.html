@@ -1,0 +1,55 @@
+<section class="rb">
+  <button mat-raised-button
+          type="submit"
+          color="primary"
+          (click)="displayButtons = !displayButtons">
+    <mat-icon>cloud_download</mat-icon>
+    RELATÓRIOS
+  </button>
+
+  <div class="rb__box"
+       [ngClass]="{'show' : displayButtons}">
+
+    <div>
+      <span class="rb__text">
+        Selecione um formato para baixar o relatório.
+      </span>
+      <button aria-label="Fechar"
+              class="rb__close"
+              color="primary"
+              mat-icon-button
+              (click)="displayButtons = !displayButtons">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="rb__buttons">
+      <button aria-label="Exportar PDF"
+              color="primary"
+              mat-mini-fab
+              matSuffix
+              matTooltipPosition="above"
+              (click)="selectReport(typeReport.PDF)"
+              [matTooltip]="'Exportar Relatório em PDF'">
+        <mat-icon>picture_as_pdf</mat-icon>
+      </button>
+      <button aria-label="Exportar Texto"
+              color="primary"
+              mat-mini-fab
+              matSuffix
+              matTooltipPosition="above"
+              (click)="selectReport(typeReport.TXT)"
+              [matTooltip]="'Exportar Relatório em TEXTO'">
+        <mat-icon>text_snippet</mat-icon>
+      </button>
+      <button aria-label="Exportar CSV"
+              color="primary"
+              mat-mini-fab
+              matSuffix
+              matTooltipPosition="above"
+              (click)="selectReport(typeReport.CSV)"
+              [matTooltip]="'Exportar Relatório em CSV'">
+        <mat-icon>apps</mat-icon>
+      </button>
+    </div>
+  </div>
+</section>

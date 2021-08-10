@@ -1,0 +1,12 @@
+<section>
+  <app-header-inside-page>
+    <button mat-raised-button
+            color="primary"
+            (click)="add()">
+      <mat-icon>check</mat-icon>
+      ADICIONAR COMISSIONAMENTO
+    </button>
+  </app-header-inside-page>
+
+  <app-table-custom [tableData]="tableData"></app-table-custom>
+</section>

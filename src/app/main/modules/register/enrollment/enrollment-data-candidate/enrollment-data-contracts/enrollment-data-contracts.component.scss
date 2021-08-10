@@ -1,0 +1,7 @@
+:host {
+  ::ng-deep .mat-column {
+    &-descricao { width: 30vw; }
+    &-valorPadrao { width: 6vw ;}
+    &-situacaoContrato { width: 6vw ;}
+  }
+}

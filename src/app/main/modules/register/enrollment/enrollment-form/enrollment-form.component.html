@@ -1,0 +1,170 @@
+<section class="candidate">
+  <app-header-inside-page> </app-header-inside-page>
+
+  <app-header-buttons [buttons]="buttons"
+                      [disabled]="disabled"
+                      [object]="enrollment"
+                      [valid]="form.valid"
+                      (buttonsEmmiter)="buttonsActions($event)"> </app-header-buttons>
+
+  <form [formGroup]="form"
+        fxLayout="row layout-wrap"
+        fxLayoutAlign="space-between start"
+        class="w-100">
+
+
+    <div fxFlex="80%"
+         fxLayout="row layout-wrap"
+         fxLayoutAlign="start center"
+         fxLayoutGap="42px"
+         class="candidate__data">
+
+      <h2 fxFlex="100%"
+          class="sub-title">DADOS DA MATRICULA</h2>
+
+      <mat-form-field fxFlex="15%"
+                      appearance="outline">
+        <mat-label>CPF</mat-label>
+        <input matInput
+               type="text"
+               appCpfValidator
+               formControlName="cpf"
+               [mask]="'000.000.000-00'"
+               (change)="queryProcess()"
+               required>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="76%"
+                      appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput
+               type="text"
+               onlyLetter
+               formControlName="name"
+               required>
+      </mat-form-field>
+
+      <div class="pos-relative"
+           fxFlex="45%">
+        <app-cfc-autocomplete class="auto-complete"
+                              formControlName="cfc"
+                              [fControl]="form.controls.cfc">
+        </app-cfc-autocomplete>
+      </div>
+
+      <app-date-input [label]="'Data de Nascimento *'"
+                      formControlName="dateOfBirth"
+                      [fControl]="form.controls.dateOfBirth"
+                      required>
+      </app-date-input>
+
+      <mat-form-field fxFlex="17%"
+                      appearance="outline">
+        <mat-label>Telefone</mat-label>
+        <input matInput
+               type="text"
+               formControlName="telefone"
+               [mask]="'(00) 00000-0000'"
+               required>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="30%"
+                      appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput
+               type="email"
+               formControlName="email"
+               required>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="61%"
+                      appearance="outline">
+        <mat-label>Observação</mat-label>
+        <input matInput
+               onlyLetter
+               type="text"
+               formControlName="comments">
+      </mat-form-field>
+
+      <h2 fxFlex="100%"
+          class="sub-title">DADOS DO PROCESSO</h2>
+
+      <mat-form-field fxFlex="21%"
+                      appearance="outline">
+        <mat-label>Serviço</mat-label>
+        <input matInput
+               type="text"
+               readonly
+               formControlName="servicoProcessoAtual">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="21%"
+                      appearance="outline">
+        <mat-label>Categoria</mat-label>
+        <input matInput
+               type="text"
+               readonly
+               formControlName="categoriaProcessoAtual">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="21%"
+                      appearance="outline">
+        <mat-label>Situação</mat-label>
+        <input matInput
+               type="text"
+               readonly
+               formControlName="situacaoProcessoAbert">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="21%"
+                      appearance="outline">
+        <mat-label>Renach</mat-label>
+        <input matInput
+               type="text"
+               readonly
+               formControlName="renachProcessoAtual">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="21%"
+                      appearance="outline">
+        <mat-label>Dt. Abertura</mat-label>
+        <input matInput
+               type="text"
+               readonly
+               dateDirective
+               formControlName="dataAberturaRenachProcessoAtual">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="21%"
+                      appearance="outline">
+        <mat-label>Dt. Vencimento</mat-label>
+        <input matInput
+               type="text"
+               readonly
+               dateDirective
+               formControlName="dataVencimentoRenachProcessoAtual">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="21%"
+                      appearance="outline">
+        <mat-label>Observação</mat-label>
+        <input matInput
+               type="text"
+               readonly
+               formControlName="observacaoProcessoAtual">
+      </mat-form-field>
+
+    </div>
+    <div fxFlex="20%"
+         fxLayout="column"
+         fxLayoutAlign="start center">
+      <h2 class="sub-title">FOTO DO CANDIDATO</h2>
+      <div class="candidate__avatar mb-2"
+           (click)="changePhoto()">
+        <img [src]="imageUser"
+             class="candidate__avatar-image"
+             alt="photo">
+      </div>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,112 @@
+:host {
+  .header {
+    height: 50px;
+    width: 100vw;
+    background-color: var(--primary);
+    color: var(--white);
+    position: relative;
+
+    &__company-name {
+      font-size: 24px;
+    }
+  }
+
+  .menu {
+    width: 100%;
+    top: -100vh;
+    z-index: 999999999;
+    transition: all 0.6s;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+
+    &__box {
+      z-index: 9999999999;
+      background-image: url('../../../../assets/images/jpeg/background-driver.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      &::before {
+        content: '';
+        background-color: rgba(var(--primary-rgb), 0.8);
+        display: block;
+        min-height: inherit;
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: inherit;
+      }
+    }
+
+    &__icon {
+      cursor: pointer;
+    }
+
+    &--relative {
+      position: relative;
+      z-index: 2;
+    }
+
+    &-items {
+      border-top: 1px solid var(--white);
+      justify-content: space-between;
+      &-ajuste {
+        justify-content: flex-start;
+      }
+    }
+
+    &__item {
+
+      &-icon {
+        font-size: 20px;
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+      }
+
+      &-title {
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      &-ajuste {
+        margin-right: 3rem;
+        &:first-child {
+          margin-right: 2rem;
+        }
+      }
+    }
+
+    &__submenu {
+      color: var(--primary-light);
+      &:hover {
+        color: var(--secondary);
+      }
+    }
+
+    &__item-active {
+      color: var(--secondary);
+    }
+  }
+
+  @media screen and (max-width: 1366px) {
+    .menu__box {
+      min-height: 62vh !important;
+    }
+  }
+
+  .mat-raised-button {
+    min-width: 30px;
+    line-height: 10px;
+    padding: 10px;
+    box-shadow: unset;
+    background: transparent;
+  }
+
+  ::ng-deep .mat-raised-button {
+    border: none !important;
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+}

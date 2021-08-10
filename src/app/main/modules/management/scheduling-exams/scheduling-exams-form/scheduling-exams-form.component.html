@@ -1,0 +1,12 @@
+<section class="marcacao-de-exames">
+  <app-scheduling-exames (showComponent)="display = $event"
+                              (exame)="exame = $event"
+                              [agendaSelecionada]="agendaSelcionada"
+                              [hidden]="display == 'calendario'">
+  </app-scheduling-exames>
+  <app-calendar (showComponent)="display = $event"
+                (agendaSelecionada)="agendaSelcionada = $event"
+                [exame]="exame"
+                [hidden]="display == 'marcacao'">
+  </app-calendar>
+</section>

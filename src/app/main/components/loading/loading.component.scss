@@ -1,0 +1,108 @@
+:host {
+
+  .loading {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    background: linear-gradient(270deg, #ff241a, #ff9e99);
+    animation: progress 2s ease;
+    height: 0.4em;
+    border: none;
+
+    &.loading-background {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, .5);
+    }
+  }
+
+  @keyframes progress {
+    0% {
+      width: 0;
+    }
+
+    100% {
+      width: 100%;
+    }
+  }
+
+  .stopped {
+    display: none;
+  }
+
+  $transition-duration: 2s;
+  $path-length: 157px;
+
+  .loading-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 200;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      overflow: visible;
+      width: 100px;
+      height: 150px;
+
+      g {
+        animation: slide $transition-duration linear infinite;
+
+        &:nth-child(2) {
+          animation-delay: $transition-duration / 4;
+
+          path {
+            animation-delay: $transition-duration / 4;
+            stroke-dasharray: 0px $path-length + 1;
+            stroke-dashoffset: 1px;
+          }
+        }
+      }
+
+      path {
+        stroke: url(#gradient);
+        stroke-width: 20px;
+        stroke-linecap: round;
+        fill: none;
+        stroke-dasharray: 0 $path-length;
+        stroke-dashoffset: 0;
+        animation: escalade $transition-duration cubic-bezier(0.8, 0, 0.2, 1) infinite;
+      }
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateY(-50px);
+    }
+
+    100% {
+      transform: translateY(50px);
+    }
+  }
+
+  @keyframes escalade {
+    0% {
+      stroke-dasharray: 0 $path-length;
+      stroke-dashoffset: 0;
+    }
+
+    50% {
+      stroke-dasharray: $path-length - 1 $path-length;
+      stroke-dashoffset: 0;
+    }
+
+    100% {
+      stroke-dasharray: $path-length - 1 $path-length;
+      stroke-dashoffset: -($path-length - 1);
+    }
+  }
+}

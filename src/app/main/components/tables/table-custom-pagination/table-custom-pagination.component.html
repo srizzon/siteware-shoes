@@ -1,0 +1,172 @@
+<div class="table-custom"
+     [ngStyle]="tableContent.width ? { 'width': tableContent.width } : { 'width': '100%' }"
+     [ngClass]="tableContent.class ? tableContent.class : ''">
+
+  <div class="table-custom__title"
+       fxLayout="row layout-wrap"
+       fxLayoutAlign="space-between center">
+    <div fxFlex="50%"
+         class="table-custom__title-text">
+      <span class="table-custom__title-text w-100 d-block"
+            *ngIf="tableContent.title">{{tableContent.title}}</span>
+      <span class="w-100 d-block"
+            *ngIf="tableContent.subTitle">{{tableContent.subTitle}}</span>
+    </div>
+    <div fxFlex="50%"
+         fxLayoutAlign="end start"
+         class="table-custom__title-right">
+      <ng-content> </ng-content>
+    </div>
+  </div>
+
+  <div class="loading-div w-100"
+       *ngIf="loading"
+       fxLayout="row"
+       fxLayoutAlign="center center"
+       [ngStyle]="tableContent.pageSize == 25 ? {'height': '500px'} : {'height': '300px'}">
+    <mat-spinner diameter="40"
+                 color="primary-light"
+                 class="m-auto"></mat-spinner>
+  </div>
+
+  <table #table
+         [ngClass]="{'table-custom__hidden' : loading}"
+         mat-table
+         [dataSource]="filtereItens">
+
+    <ng-container matColumnDef="{{itemColumn}}"
+                  *ngFor="let itemColumn of tableContent.columns">
+
+      <th mat-header-cell
+          *matHeaderCellDef>{{ tableContent.columnData[itemColumn].header }}</th>
+
+      <td mat-cell
+          *matCellDef="let itemDataSource">
+
+        <span *ngIf="tableContent.columnData[itemColumn].type === 'string'">
+          <ng-container *ngIf="tableContent.columnData[itemColumn].pipe; else noPipe">
+
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'cpf'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | cpf }}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'cnpj'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | cnpj }}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'currency'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | currency:'BRL':'symbol':'1.2-2'}}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'date'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | date:'dd/MM/yyyy'}}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'dateAndTime'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | dateAndTime}}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'dateToFront'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | dateToFront}}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'name'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | formatName }}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'situationPayment'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | situationPipe }}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'situationRegistration'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | situationRegistration }}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'timeToFront'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | timeToFront }}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'truefalse'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | truefalse }}
+            </span>
+            <span *ngIf="tableContent.columnData[itemColumn].pipe === 'typerelease'">
+              {{itemDataSource[tableContent.columnData[itemColumn].element] | typerelease }}
+            </span>
+          </ng-container>
+          <ng-template #noPipe>
+            {{ itemDataSource[tableContent.columnData[itemColumn].element] }}
+          </ng-template>
+        </span>
+
+        <span *ngIf="tableContent.columnData[itemColumn].type === 'object'">
+          {{getFromObject(itemDataSource, tableContent.columnData[itemColumn].element)}}
+        </span>
+
+        <span *ngIf="tableContent.columnData[itemColumn].type === 'buttons'">
+
+          <ng-container *ngIf="tableContent.columnData[itemColumn].buttonType === 'stroked'; else raised">
+            <button *ngFor="let item of tableContent.columnData[itemColumn].buttons"
+                    color="primary"
+                    class="table-custom__button mr-1"
+                    mat-stroked-button
+                    matTooltipPosition="above"
+                    [matTooltip]="item.tooltip ? item.tooltip : ''"
+                    [disabled]="item.disabled ? item.disabled(itemDataSource) : false"
+                    (click)="item.onClick(itemDataSource)">
+              <span *ngIf="item.icon">
+                <mat-icon>{{item.icon}}</mat-icon>
+              </span>
+              <span *ngIf="item.label">
+                {{item.label}}
+              </span>
+            </button>
+          </ng-container>
+
+          <ng-template #raised>
+            <ng-container *ngIf="tableContent.columnData[itemColumn].buttonType === 'raised'; else icons">
+              <button *ngFor="let item of tableContent.columnData[itemColumn].buttons"
+                      class="table-custom__button mr-1"
+                      color="primary"
+                      mat-raised-button
+                      matTooltipPosition="above"
+                      [disabled]="item.disabled ? item.disabled(itemDataSource) : false"
+                      [matTooltip]="item.tooltip ? item.tooltip : ''"
+                      (click)="item.onClick(itemDataSource)">
+                <span *ngIf="item.icon">
+                  <mat-icon>{{item.icon}}</mat-icon>
+                </span>
+                <span *ngIf="item.label">
+                  {{item.label}}
+                </span>
+              </button>
+            </ng-container>
+          </ng-template>
+
+          <ng-template #icons>
+            <ng-container *ngIf="tableContent.columnData[itemColumn].buttonType === 'icons'">
+              <button *ngFor="let item of tableContent.columnData[itemColumn].buttons"
+                      class="table-custom__button-icon mr-1"
+                      color="primary"
+                      mat-icon-button
+                      matTooltipPosition="above"
+                      [matTooltip]="item.tooltip ? item.tooltip : ''"
+                      [disabled]="item.disabled ? item.disabled(itemDataSource) : false"
+                      (click)="item.onClick(itemDataSource)">
+                <mat-icon>{{item.icon}}</mat-icon>
+              </button>
+            </ng-container>
+          </ng-template>
+        </span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row
+        *matHeaderRowDef="displayedColumns;  sticky: true"></tr>
+    <tr mat-row
+        *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div class="loading-div w-100"
+       *ngIf="items && items.length == 0 && !loading"
+       fxLayout="row"
+       fxLayoutAlign="center center"
+       [ngStyle]="tableContent.pageSize == 25 ? {'height': '500px'} : {'height': '300px'}">
+    <div class="txt-center">
+      Não existe dados para serem exibidos.
+    </div>
+  </div>
+
+  <mat-paginator [length]="length"
+                 [pageSize]="tableContent.pageSize"
+                 [pageSizeOptions]="[5, 10, 25, 50, 100]"></mat-paginator>
+</div>

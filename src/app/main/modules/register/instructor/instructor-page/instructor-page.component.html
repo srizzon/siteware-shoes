@@ -1,0 +1,12 @@
+<section>
+  <app-header-inside-page>
+    <button mat-raised-button
+            color="primary"
+            (click)="add()">
+      <mat-icon>add_circle_outline</mat-icon>
+      INSTRUTOR
+    </button>
+  </app-header-inside-page>
+
+  <app-table-custom [tableData]="instructorTable"></app-table-custom>
+</section>

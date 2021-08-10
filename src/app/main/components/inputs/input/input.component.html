@@ -1,0 +1,31 @@
+<div class="fg">
+  <!--Label text-->
+  <label [attr.for]="idd">{{text}}<sup *ngIf="!optional">*</sup></label>
+  <!--Input form control element with on change event listener helpful to propagate changes -->
+  <input
+    type="{{type}}"
+    #input
+    id="{{idd}}"
+    placeholder="{{pH}}"
+    (blur)="onChange($event, input.value)"
+  >
+  <!--Loop through errors-->
+  <div
+    style="height:0px;"
+    [@visibilityChanged]="!c.pristine && !c.valid"
+    class="error"
+  >
+    <p *ngFor="let error of errors">{{error}}</p>
+  </div>
+</div>
+
+
+<!-- <inv-input
+  formControlName="title"
+  [c]="newQueryForm.controls.title"
+  [optional]="true"
+  idd="title"
+  placeholder="Type Title to search"
+  text="Title"
+></inv-input>
+ -->

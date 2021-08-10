@@ -1,0 +1,70 @@
+<section fxLayout="column">
+  <div fxLayout="column"
+       class="cfc-login__title">
+    <h1>SINDAUTO</h1>
+  </div>
+  <div fxLayout="column"
+       fxLayoutAlign="center center"
+       class="cfc-login__login-wrapper">
+    <form [formGroup]="formLogin"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          class="box-login"
+          (submit)="login()">
+      <img src="../../assets/images/png/logo.png">
+      <h1 color="primary"
+          class="mb-0 mt-4">SINDAUTO</h1>
+      <mat-form-field class="w-100">
+        <mat-label color="primary">Usuário</mat-label>
+        <input #userInput
+               type="text"
+               matInput
+               [mask]="'000.000.000-00'"
+               formControlName="username"
+               placeholder="Usuário" />
+        <mat-error class="error-login"
+                   *ngIf="formLogin.controls.username.errors">
+          <span *ngIf="formLogin.controls.username.errors?.required">
+            Informe seu <strong>Usuário</strong>
+          </span>
+          <span *ngIf="formLogin.controls.username.errors?.email">
+            Informe um usuário no formato <strong>usuario@email.com</strong>
+          </span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Senha</mat-label>
+        <input matInput
+               [type]="showPassword ? 'text' : 'password'"
+               formControlName="password" />
+        <mat-icon matSuffix
+                  (mouseover)=" this.showPassword = !this.showPassword"
+                  (mouseout)=" this.showPassword = !this.showPassword">{{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error *ngIf="formLogin.controls.password.errors">
+          <span *ngIf="formLogin.controls.password.errors?.required">
+            Informe sua <strong>Senha</strong>
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-checkbox color="primary"
+                    class="w-100 mt-2"
+                    formControlName="remember">Lembrar usuário</mat-checkbox>
+      <button class="cfc-login__btn-login mt-4"
+              mat-raised-button
+              id="button-entrar"
+              color="primary"
+              [disabled]="formLogin.invalid"
+              type="submit">
+        <span [@isLoading]="loading ? 'fadeOut' : 'fadeIn'"
+              color="accent"> Entrar </span>
+        <mat-spinner [@isLoading]="loading ? 'fadeIn' : 'fadeOut'"
+                     diameter="20"
+                     color="primary-light"
+                     class="m-auto"></mat-spinner>
+
+      </button>
+
+    </form>
+  </div>
+</section>

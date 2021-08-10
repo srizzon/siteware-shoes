@@ -1,0 +1,95 @@
+<section class="header"
+         fxLayout="row"
+         fxLayoutAlign="space-between center"
+         fxLayoutGap="gappx">
+  <span class="ml-5"
+        fxLayout="row"
+        fxLayoutAlign="center center">
+    <mat-icon class="menu__icon"
+              (click)="openMenu()">menu</mat-icon>
+    <div class="ml-2 header__company-name">SINDAUTO</div>
+  </span>
+  <span fxLayout="row"
+        fxLayoutAlign="center center"
+        class="mr-5">
+    <div class="mr-4">
+      <div>{{user?.name}}</div>
+      <div>CPF: {{user?.userName | cpf}}</div>
+    </div>
+    <button mat-raised-button
+            (click)="logout()"
+            [matTooltip]="'Sair'"
+            matTooltipPosition="above">
+
+      <img src="../../../../assets/images/svg/logout.svg" />
+    </button>
+
+  </span>
+
+  <div #menu
+       id="menu"
+       (click)="closeMenu($event)"
+       class="menu">
+    <div #menuBox
+         id="menu-box"
+         class="menu__box">
+      <div class="menu--relative"
+           fxLayout="row"
+           fxLayoutAlign="space-between center">
+        <span class="ml-5"
+              fxLayout="row"
+              fxLayoutAlign="center center">
+          <mat-icon class="menu__icon"
+                    (click)="closeMenu()">close</mat-icon>
+          <div class="ml-2 header__company-name">SINDAUTO</div>
+        </span>
+        <span fxLayout="row"
+              fxLayoutAlign="center center"
+              class="mr-5">
+          <div class="mr-2">
+            <div>{{user?.name}}</div>
+            <div>CPF: {{user?.userName | cpf}}</div>
+          </div>
+          <button mat-raised-button
+                  (click)="logout()">
+            <img src="../../../../assets/images/svg/logout.svg" />
+          </button>
+        </span>
+      </div>
+      <div class="menu--relative menu-items px-5"
+           fxLayout="row"
+           [ngClass]="{'menu-items-ajuste': menuItems.length <= 3 }">
+
+        <div *ngFor="let item of menuItems"
+             class="menu__item mt-3"
+             [ngClass]="{'menu__item-ajuste': menuItems.length <= 3 }">
+          <div fxLayout="row">
+            <mat-icon class="menu__item-icon mr-2">{{item?.icon}}</mat-icon>
+            <div class="menu__item-title">{{item?.name}}</div>
+          </div>
+          <div *ngFor="let submenu of item?.submenus"
+               class="mt-2">
+            <a *ngIf="!submenu?.type"
+               [routerLink]="[submenu?.route]"
+               routerLinkActive="menu__item-active"
+               [routerLinkActiveOptions]="{exact: true}"
+               class="menu__submenu"
+               (click)="closeMenu()">{{submenu?.name}}</a>
+            <a *ngIf="submenu?.type == 'external'"
+               [href]="submenu?.route"
+               target="_blank"
+               class="menu__submenu"
+               (click)="closeMenu()">{{submenu?.name}}</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div>
+  <app-loading></app-loading>
+</div>

@@ -1,0 +1,98 @@
+<section>
+  <app-header-inside-page></app-header-inside-page>
+  <app-header-buttons [buttons]="buttons"
+                      [disabled]="disabled"
+                      [object]="local"
+                      [valid]="form.valid"
+                      (buttonsEmmiter)="buttonsActions($event)"> </app-header-buttons>
+
+  <form [formGroup]="form"
+        fxLayout="row layout-wrap"
+        fxLayoutAlign="space-between start">
+
+    <h2 fxFlex="100%"
+        class="sub-title">Dados do Local</h2>
+
+    <mat-form-field fxFlex="84%"
+                    appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <input matInput
+             type="text"
+             formControlName="descricao">
+    </mat-form-field>
+
+    <mat-form-field fxFlex="14%"
+                    appearance="outline">
+      <mat-label>Status</mat-label>
+      <input matInput
+             type="text"
+             formControlName="ativo">
+    </mat-form-field>
+
+    <mat-form-field fxFlex="49%"
+                    appearance="outline">
+      <mat-label>Código Local Detran</mat-label>
+      <input matInput
+             type="text"
+             formControlName="codigoLocalDetran">
+    </mat-form-field>
+
+    <div class="pos-relative candidate-register__input-left"
+         fxFlex="49%">
+      <app-unidade-detran-autocomplete class="auto-complete"
+                                       formControlName="idUnidadeDetran"
+                                       [fControl]="form.controls.idUnidadeDetran">
+      </app-unidade-detran-autocomplete>
+    </div>
+
+    <div fxFlex="100%"
+         fxLayout="row layout-wrap"
+         fxLayoutGap="42px"
+         *ngIf="local.dataAlteracao || local.dataCadastro">
+
+      <h2 fxFlex="100%"
+          class="sub-title">Dados de Auditoria</h2>
+
+      <mat-form-field fxFlex="25%"
+                      appearance="outline"
+                      *ngIf="local.dataCadastro">
+        <mat-label>Data de Cadastro</mat-label>
+        <input matInput
+               type="text"
+               dateDirective
+               [inputDate]="local.dataCadastro"
+               formControlName="dataCadastro">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="55%"
+                      appearance="outline"
+                      *ngIf="local.dataCadastro">
+        <mat-label>Usuário de Cadastro</mat-label>
+        <input matInput
+               type="text"
+               formControlName="usuarioCadastro">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="25%"
+                      appearance="outline"
+                      *ngIf="local.dataAlteracao">
+        <mat-label>Data de Alteração</mat-label>
+        <input matInput
+               type="text"
+               dateDirective
+               [inputDate]="local.dataAlteracao"
+               formControlName="dataAlteracao">
+      </mat-form-field>
+
+      <mat-form-field fxFlex="55%"
+                      appearance="outline"
+                      *ngIf="local.dataAlteracao">
+        <mat-label>Usuário de Alteração</mat-label>
+        <input matInput
+               type="text"
+               formControlName="usuarioAlteracao">
+      </mat-form-field>
+    </div>
+
+  </form>
+</section>

@@ -1,0 +1,16 @@
+:host {
+  :ng-deep .input-crop {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  .image-cropp {
+    max-height: 500px;
+    overflow-y: scroll;
+
+    image-cropper {
+      padding: 0;
+      max-height: 100%;
+    }
+  }
+}
