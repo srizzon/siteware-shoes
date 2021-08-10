@@ -8,11 +8,13 @@ import { NbThemeModule, NbLayoutModule, NbMenuModule, NbSidebarModule } from '@n
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { SharedModule } from './shared/shared.module';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContentLayoutComponent
+    ContentLayoutComponent,
+    AuthLayoutComponent
   ],
   imports: [
     BrowserModule,
