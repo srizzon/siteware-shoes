@@ -12,7 +12,7 @@ export class ContentLayoutComponent {
     {
       title: 'Home',
       icon: 'home-outline',
-      link: '/home',
+      link: '/products',
       home: true,
     },
     {
@@ -21,11 +21,13 @@ export class ContentLayoutComponent {
       children: [
         {
           title: 'Calçados',
-          link: '/pages/forms/inputs',
+          link: '/products',
+          queryParams: {category: 'shoes'}
         },
         {
           title: 'Meias',
-          link: '/pages/forms/layouts',
+          link: '/products',
+          queryParams: {category: 'socks'}
         },
       ]
     },
