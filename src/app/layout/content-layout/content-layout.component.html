@@ -1,0 +1,16 @@
+<nb-layout windowMode>
+    <nb-layout-header fixed>
+        <app-header></app-header>
+    </nb-layout-header>
+    <nb-sidebar>
+        <nb-menu [items]="menu"></nb-menu>
+    </nb-sidebar>
+    <nb-layout-column>
+        <router-outlet></router-outlet>
+    </nb-layout-column>
+    <nb-layout-footer fixed>
+        Siteware Shoes CNPJ: 32.911.435/0001-84
+        <br>
+        Copyright © 2000-2021 - Siteware Shoes - Todos os direitos reservados.
+      </nb-layout-footer>
+</nb-layout>

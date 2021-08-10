@@ -1,0 +1,55 @@
+.products-row {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+    nb-card {
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+
+            img {
+                transform: scale(1.02);
+            }
+        }
+
+        nb-card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow: hidden;
+
+            img {
+                object-fit: contain;
+                height: 180px;
+                width: 100%;
+            }
+
+            .prices {
+                .old {
+                    color: gray;
+                    font-size: 12px;
+                    text-decoration: line-through;
+                    margin-right: 10px;
+                }
+
+                .new {
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.banner {
+    img {
+        object-fit: cover;
+    }
+}
+
+nb-badge {
+    margin: 10px;
+    z-index: 1;
+}

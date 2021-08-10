@@ -1,0 +1,21 @@
+header {
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+        display: flex;
+        
+        h5 {
+            margin: 0 0 0 10px;
+            color: white;
+        }
+    }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+    }
+
+}

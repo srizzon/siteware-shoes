@@ -1,0 +1,29 @@
+<div class="banner">
+    <ngx-glide [showArrows]="false" [perView]="1" [focusAt]="0" type="carousel">
+        <img *ngFor="let image of images" height="500" [src]="image" alt="">
+    </ngx-glide>
+</div>
+
+<div class="products-list">
+    <h5>Todos os produtos</h5>
+    <div class="products-row">
+        <nb-card *ngFor="let product of products">
+            <nb-card-body>
+                <nb-badge *ngFor="let item of product.promo" [text]="item.title" [status]="item.status" position="top right"></nb-badge>
+
+                <ngx-glide [showArrows]="false" [perView]="1" [focusAt]="0" type="carousel">
+                    <img *ngFor="let image of product.images" [src]="image" alt="">
+                </ngx-glide>
+
+                <strong>{{product.title}}</strong>
+                
+                <div class="prices">
+                    <span *ngIf="product.oldPrice" class="old">R${{product.oldPrice}}</span>
+                    <span class="new">R${{product.price}}</span>
+                </div>
+
+                <button nbButton status="success" ><nb-icon icon="shopping-cart-outline"></nb-icon> Comprar</button>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
