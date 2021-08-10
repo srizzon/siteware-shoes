@@ -5,7 +5,7 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/products',
     pathMatch: 'full'
   },
   {
@@ -13,8 +13,8 @@ const routes: Routes = [
     component: ContentLayoutComponent,
     children: [
       {
-        path: '',
-        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+        path: 'products',
+        loadChildren: () => import('./modules/product/product.module').then(m => m.ProductModule)
       },
     ]
   }
