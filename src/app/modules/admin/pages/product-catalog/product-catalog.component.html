@@ -1,7 +1,7 @@
 <div>
     <div class="header">
         <h5>Catálogo de produtos</h5>
-        <button nbButton status="primary">
+        <button nbButton status="primary" routerLink="/admin/new">
             <nb-icon icon="plus-outline"></nb-icon>
         </button>
     </div>
@@ -42,12 +42,12 @@
                             </button>
                         </td>
                         <td>
-                            <button nbButton ghost fullWidth status="basic">
+                            <button nbButton ghost fullWidth status="basic" routerLink="/admin/{{product.id}}">
                                 <nb-icon icon="edit-outline"></nb-icon>
                             </button>
                         </td>
                         <td>
-                            <button nbButton ghost fullWidth status="primary">
+                            <button nbButton ghost fullWidth status="primary" (click)="delete(product.id)">
                                 <nb-icon icon="trash-2-outline"></nb-icon>
                             </button>
                         </td>

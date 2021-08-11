@@ -14,4 +14,11 @@ export class ProductCatalogComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  delete(id: number){
+    //Change state
+    this.products = this.products.filter((p) => {
+      return p.id != id;
+    });
+  }
+
 }

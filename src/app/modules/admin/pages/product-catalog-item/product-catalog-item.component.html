@@ -1,0 +1,61 @@
+<nb-card>
+    <nb-card-header>
+        <h4>Novo produto</h4>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label class="label">Nome</label>
+                    <input type="text" nbInput fullWidth placeholder="Título">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label class="label">Preço</label>
+                    <input type="text" nbInput fullWidth placeholder="Preço">
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-group">
+                    <label class="label">Desconto</label>
+                    <input type="text" nbInput fullWidth placeholder="Desconto">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label class="label">Categorias</label>
+                    <nb-select multiple fullWidth placeholder="Categorias">
+                        <nb-option value="shoes">Shoes</nb-option>
+                        <nb-option value="socks">Socks</nb-option>
+                    </nb-select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label class="label">Promoções</label>
+                    <nb-select multiple fullWidth placeholder="Promoções">
+                        <nb-option value="1">Leve 2 e pague 1</nb-option>
+                        <nb-option value="2">3 por R$10,00</nb-option>
+                    </nb-select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <button nbButton size="small" status="primary">
+                        Salvar
+                    </button>
+                    <button nbButton ghost size="small" routerLink="/admin">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

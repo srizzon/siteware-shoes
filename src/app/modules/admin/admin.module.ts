@@ -3,16 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProductCatalogComponent } from './pages/product-catalog/product-catalog.component';
-import { NbAlertModule, NbBadgeModule, NbButtonModule, NbCardModule, NbIconModule, NbListModule, NbPopoverModule, NbTreeGridModule } from '@nebular/theme';
+import { NbAlertModule, NbBadgeModule, NbButtonModule, NbCardModule, NbFormFieldModule, NbIconModule, NbInputModule, NbLayoutModule, NbListModule, NbPopoverModule, NbSelectModule, NbTreeGridModule } from '@nebular/theme';
+import { ProductCatalogItemComponent } from './pages/product-catalog-item/product-catalog-item.component';
 
 
 @NgModule({
   declarations: [
-    ProductCatalogComponent
+    ProductCatalogComponent,
+    ProductCatalogItemComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
+    NbLayoutModule,
     NbCardModule,
     NbListModule,
     NbIconModule,
@@ -20,7 +23,10 @@ import { NbAlertModule, NbBadgeModule, NbButtonModule, NbCardModule, NbIconModul
     NbPopoverModule,
     NbTreeGridModule,
     NbBadgeModule,
-    NbAlertModule
+    NbAlertModule,
+    NbInputModule,
+    NbSelectModule,
+    NbFormFieldModule
   ]
 })
 export class AdminModule { }
