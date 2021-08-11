@@ -12,7 +12,6 @@ export class ProductCatalogComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }

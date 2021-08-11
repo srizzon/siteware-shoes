@@ -8,26 +8,52 @@
 
     <nb-card>
         <nb-card-body>
-            <nb-list>
-                <nb-list-item *ngFor="let product of products">
-                    <div class="flex">
-                        <div>
-                            <img width="60" [src]="product.images[0]" alt="">
-                        </div>
-                        <b>
-                            {{product.title}}
-                        </b>
-                    </div>
-                    <div class="flex">
-                        <button data-cy="delete-debtor" nbButton ghost fullWidth size="small" status="basic">
-                            <nb-icon icon="edit-outline"></nb-icon>
-                        </button>
-                        <button data-cy="delete-debtor" nbButton ghost fullWidth size="small" status="primary">
-                            <nb-icon icon="trash-2-outline"></nb-icon>
-                        </button>
-                    </div>
-                </nb-list-item>
-            </nb-list>
+            <table datatable class="row-border hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Categoria</th>
+                        <th>Promoção</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>
+                            <img width="100" [src]="product.images[0]" alt="">
+                        </td>
+                        <td>
+                            <b> {{product.title}} </b>
+                        </td>
+                        <td>
+                            R${{product.price}}
+                        </td>
+                        <td class="category">
+                            <button nbButton size="tiny" *ngFor="let category of product.category">
+                                {{category}}
+                            </button>
+                        </td>
+                        <td>
+                            <button nbButton size="tiny" [status]="promo.status" *ngFor="let promo of product.promo">
+                                {{promo.title}}
+                            </button>
+                        </td>
+                        <td>
+                            <button nbButton ghost fullWidth status="basic">
+                                <nb-icon icon="edit-outline"></nb-icon>
+                            </button>
+                        </td>
+                        <td>
+                            <button nbButton ghost fullWidth status="primary">
+                                <nb-icon icon="trash-2-outline"></nb-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </nb-card-body>
     </nb-card>
 </div>

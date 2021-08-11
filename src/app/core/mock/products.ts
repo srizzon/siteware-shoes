@@ -8,7 +8,8 @@ export const PRODUCTS = [
             "https://imgcentauro-a.akamaihd.net/900x900/94290631A4/tenis-nike-revolution-5-feminino-img.jpg"
         ],
         "category": [
-            "shoes"
+            "shoes",
+            "shocks"
         ],
         "price": "249,99",
         "oldPrice": "329,99",
@@ -69,7 +70,7 @@ export const PRODUCTS = [
         "promo": [
             {
                 "id": 2,
-                "title": "Leve 3 por R$10,00",
+                "title": "3 por R$10,00",
                 "status": "warning"
             }
         ]
@@ -89,7 +90,7 @@ export const PRODUCTS = [
         "promo": [
             {
                 "id": 2,
-                "title": "Leve 3 por R$10,00",
+                "title": "3 por R$10,00",
                 "status": "warning"
             }
         ]

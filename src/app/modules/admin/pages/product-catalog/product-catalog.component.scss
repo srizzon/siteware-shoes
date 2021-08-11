@@ -9,16 +9,17 @@
     }
 }
 
-nb-list-item {
+table {
+    width: 100%;
+}
+
+.flex {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+}
 
-    .flex {
-        display: flex;
-        align-items: center;
-
-        img {
-            margin-right: 10px;
-        }
+.category {
+    button {
+        margin-right: 3px;
     }
 }

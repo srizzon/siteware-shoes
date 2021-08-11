@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { ProductCatalogComponent } from './pages/product-catalog/product-catalog.component';
-import { NbButtonModule, NbCardModule, NbIconModule, NbListModule, NbPopoverModule, NbTreeGridModule } from '@nebular/theme';
+import { NbAlertModule, NbBadgeModule, NbButtonModule, NbCardModule, NbIconModule, NbListModule, NbPopoverModule, NbTreeGridModule } from '@nebular/theme';
 
 
 @NgModule({
@@ -18,7 +18,9 @@ import { NbButtonModule, NbCardModule, NbIconModule, NbListModule, NbPopoverModu
     NbIconModule,
     NbButtonModule,
     NbPopoverModule,
-    NbTreeGridModule
+    NbTreeGridModule,
+    NbBadgeModule,
+    NbAlertModule
   ]
 })
 export class AdminModule { }
