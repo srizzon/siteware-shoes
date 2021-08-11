@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PRODUCTS } from 'src/app/core/mock/products';
 
 @Component({
-  selector: 'app-crud',
-  templateUrl: './crud.component.html',
-  styleUrls: ['./crud.component.scss']
+  selector: 'app-product-catalog',
+  templateUrl: './product-catalog.component.html',
+  styleUrls: ['./product-catalog.component.scss']
 })
-export class CrudComponent implements OnInit {
+export class ProductCatalogComponent implements OnInit {
 
   products = PRODUCTS;
 

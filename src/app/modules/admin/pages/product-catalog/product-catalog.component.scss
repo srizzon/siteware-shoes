@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    h5 {
+        margin: 0;
+    }
+}
+
+nb-list-item {
+    display: flex;
+    justify-content: space-between;
+
+    .flex {
+        display: flex;
+        align-items: center;
+
+        img {
+            margin-right: 10px;
+        }
+    }
+}

@@ -32,9 +32,9 @@ export class ContentLayoutComponent {
       ]
     },
     {
-      title: 'CRUD',
-      icon: 'edit-outline',
-      link: '/crud'
+      title: 'Admin',
+      icon: 'options-2-outline',
+      link: '/admin'
     },
   ];
 

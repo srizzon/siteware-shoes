@@ -7,7 +7,7 @@
 <div class="products-list">
     <h5>Todos os produtos</h5>
     <div class="products-row">
-        <nb-card *ngFor="let product of filterProducts">
+        <nb-card *ngFor="let product of filterProducts" routerLink="{{product.id}}">
             <nb-card-body>
                 <nb-badge *ngFor="let item of product.promo" [text]="item.title" [status]="item.status" position="top right"></nb-badge>
 

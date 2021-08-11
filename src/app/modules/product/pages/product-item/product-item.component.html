@@ -1,0 +1,11 @@
+<nb-layout class="product-item">
+    <nb-layout-column class="images">
+        <ngx-glide [showArrows]="false" [perView]="1" [focusAt]="0" type="carousel">
+            <img *ngFor="let image of currentProduct.images" [src]="image" alt="">
+        </ngx-glide>
+    </nb-layout-column>
+
+    <nb-layout-column class="informations">
+        <h4>{{currentProduct.title}}</h4>
+    </nb-layout-column>
+</nb-layout>
