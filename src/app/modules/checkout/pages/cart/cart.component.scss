@@ -1,0 +1,50 @@
+nb-card-header,
+.space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-items {
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+
+        nb-badge {
+            position: sticky;
+            width: fit-content;
+        }
+    }
+
+    .quantity {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .prices {
+        text-align: right;
+    }
+}
+
+.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.summary {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

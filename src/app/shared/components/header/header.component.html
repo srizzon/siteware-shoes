@@ -1,4 +1,4 @@
-<header>
+<div class="header">
     <div class="logo" routerLink="/products">
         <embed  width="50" src="assets/logo.svg" alt="">
         <h5>Siteware Shoes</h5>
@@ -9,8 +9,8 @@
             <nb-icon icon="person-outline"></nb-icon>
             Login
         </button>
-        <button nbButton>
-            <nb-icon icon="shopping-cart-outline"></nb-icon> (0)
+        <button nbButton routerLink="/checkout/cart">
+            <nb-icon icon="shopping-cart-outline"></nb-icon> ({{cartQuantity$ | async}})
         </button>
     </div>
-</header>
+</div>

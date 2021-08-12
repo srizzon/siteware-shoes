@@ -1,4 +1,4 @@
-header {
+.header {
     width: 100% !important;
     display: flex;
     align-items: center;
@@ -6,6 +6,7 @@ header {
 
     .logo {
         display: flex;
+        cursor: pointer;
         
         h5 {
             margin: 0 0 0 10px;

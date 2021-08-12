@@ -1,0 +1,90 @@
+<nb-card *ngIf="cart">
+    <nb-card-header>
+        <h4>Meu carrinho</h4>
+
+        <button nbButton status="primary" (click)="clear()" [disabled]="cart.items.length == 0">
+            <nb-icon icon="trash-outline"></nb-icon>
+            Limpar carrinho
+        </button>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col-8">
+                <nb-card class="list-items" *ngFor="let item of cart.items">
+                    <nb-card-header>
+                        <h6>{{item.product.title}}</h6>
+
+                        <button nbButton status="primary" ghost (click)="deleteProduct(item.product)" nbTooltip="Excluir produto">
+                            <nb-icon icon="trash-outline"></nb-icon>
+                        </button>
+                    </nb-card-header>
+                    <nb-card-body>
+                        <div class="row">
+                            <div class="col-2">
+                                <img width="100" [src]="item.product.images[0]" alt="">
+                            </div>
+
+                            <div class="col-10 info">
+                                <label class="label">Tamanho: 42</label>
+                                <label class="label">Vendido e entregue por: Siteware Shoes</label>
+
+                                <nb-badge *ngFor="let promo of item.product.promotions" [text]="promo.title" [status]="promo.status" nbTooltip="{{promo.description}}">
+                                </nb-badge>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-2 quantity">
+                                <button nbButton status="primary" size="tiny" (click)="updateQuantity('minus', item)">
+                                    <nb-icon icon="minus-outline"></nb-icon>
+                                </button>
+                                {{item.quantity}}
+                                <button nbButton status="primary" size="tiny"(click)="updateQuantity('plus', item)">
+                                    <nb-icon icon="plus-outline"></nb-icon>
+                                </button>
+                            </div>
+
+                            <div class="col-10 prices">
+                                <span *ngIf="item.product.finalPrice" class="old">R${{item.product.price}}</span>
+                                <span class="new">R${{item.product.finalPrice || item.product.price}}</span>
+                            </div>
+                        </div>
+                        
+                    </nb-card-body>
+                </nb-card>
+
+                <div class="empty" *ngIf="cart.items.length == 0">
+                    <button nbButton ghost disabled>
+                        <nb-icon icon="shopping-cart-outline"></nb-icon>
+                        Carrinho vazio
+                    </button>
+                    
+                </div>
+            </div>
+            <div class="col-4">
+                <nb-card>
+                    <nb-card-header>
+                        <h6>Resumo da compra</h6>
+                    </nb-card-header>
+                    <nb-card-body>
+                        <div class="summary">
+                            <div>
+                                Subtotal: <b>R${{cart.subTotal}}</b> 
+                            </div>
+                            <div>
+                                Descontos: <b>R${{cart.totalDiscount}}</b> 
+                            </div>
+                            <div>
+                                Total: <b>R${{cart.total}}</b> 
+                            </div>
+                        </div>
+
+                        <button nbButton fullWidth status="success">
+                            Finalizar compra
+                        </button>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>
