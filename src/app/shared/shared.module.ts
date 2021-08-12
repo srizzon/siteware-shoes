@@ -9,7 +9,8 @@ import {
 } from '@nebular/theme';
 
 import { HeaderComponent } from './components/header/header.component';
-import { ProductStore } from './state/product/product-store';
+import { ProductStore } from './state/product-store';
+import { PromotionStore } from './state/promotion-store';
 
 const MODULES = [
   NbLayoutModule,
@@ -22,6 +23,6 @@ const MODULES = [
   declarations: [HeaderComponent],
   imports: [CommonModule, ...MODULES],
   exports: [HeaderComponent],
-  providers: [ProductStore]
+  providers: [ProductStore, PromotionStore]
 })
 export class SharedModule { }

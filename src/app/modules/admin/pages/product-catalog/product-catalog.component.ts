@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PRODUCTS } from 'src/app/core/mock/products';
 import { Product } from 'src/app/shared/models/product.model';
-import { ProductStore } from 'src/app/shared/state/product/product-store';
+import { ProductStore } from 'src/app/shared/state/product-store';
 
 @Component({
   selector: 'app-product-catalog',

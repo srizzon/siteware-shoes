@@ -3,59 +3,81 @@
         <h4>Novo produto</h4>
     </nb-card-header>
     <nb-card-body>
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                    <label class="label">Nome</label>
-                    <input type="text" nbInput fullWidth placeholder="Título">
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label class="label">Preço</label>
-                    <input type="text" nbInput fullWidth placeholder="Preço">
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <label class="label">Desconto</label>
-                    <input type="text" nbInput fullWidth placeholder="Desconto">
-                </div>
-            </div>
-        </div>
+        <form [formGroup]="form">
 
-        <div class="row">
-            <div class="col-4">
-                <div class="form-group">
-                    <label class="label">Categorias</label>
-                    <nb-select multiple fullWidth placeholder="Categorias">
-                        <nb-option value="shoes">Shoes</nb-option>
-                        <nb-option value="socks">Socks</nb-option>
-                    </nb-select>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="form-group">
-                    <label class="label">Promoções</label>
-                    <nb-select multiple fullWidth placeholder="Promoções">
-                        <nb-option value="1">Leve 2 e pague 1</nb-option>
-                        <nb-option value="2">3 por R$10,00</nb-option>
-                    </nb-select>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-4">
-                <div class="form-group">
-                    <button nbButton size="small" status="primary" (click)="addProduct()">
-                        Salvar
-                    </button>
-                    <button nbButton ghost size="small" routerLink="/admin">
-                        Cancelar
-                    </button>
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-group">
+                        <label class="label">Título*</label>
+                        <input type="text" nbInput fullWidth placeholder="Título" formControlName="title">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="label">Preço*</label>
+                        <input type="text" mask="separator.2" thousandSeparator="." prefix="R$ " nbInput fullWidth
+                            placeholder="Preço" formControlName="price">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="label">Desconto</label>
+                        <input type="text" nbInput fullWidth placeholder="Desconto" formControlName="discount">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="label">Tipo do desconto</label>
+                        <nb-select fullWidth placeholder="Tipo do desconto" formControlName="discountType">
+                            <nb-option value="value">Valor</nb-option>
+                            <nb-option value="percent">Percentual</nb-option>
+                        </nb-select>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="label">Categorias</label>
+                        <nb-select multiple fullWidth placeholder="Categorias" formControlName="categories">
+                            <nb-option value="shoes">Shoes</nb-option>
+                            <nb-option value="socks">Socks</nb-option>
+                        </nb-select>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="label">Promoções</label>
+                        <nb-select multiple fullWidth placeholder="Promoções" formControlName="promotions">
+                            <nb-option [value]="promotion.id" *ngFor="let promotion of promotions$ | async">{{promotion.title}}</nb-option>
+                        </nb-select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label class="label">Imagens*</label>
+                        <textarea nbInput fullWidth rows="3" formControlName="images"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <button nbButton size="small" status="primary" (click)="addProduct()" [disabled]="form.invalid">
+                            Salvar
+                        </button>
+                        <button nbButton ghost size="small" routerLink="/admin">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </nb-card-body>
 </nb-card>

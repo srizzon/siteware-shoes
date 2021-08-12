@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgSimpleStateBaseStore } from 'ng-simple-state';
 import { PRODUCTS } from 'src/app/core/mock/products';
-import { Product } from '../../models/product.model';
+import { Product } from '../models/product.model';
 
 export type ProductState = Array<Product>;
 
@@ -18,9 +18,5 @@ export class ProductStore extends NgSimpleStateBaseStore<ProductState> {
 
   delete(id: number): void {
     this.setState(state => state.filter(item => item.id !== id) );
-  }
-
-  setComplete(id: number, completed: boolean = true): void {
-    this.setState(state => state.map(item => item.id === id ? {...item, completed} : item) );
   }
 }

@@ -6,8 +6,10 @@ export class Product {
     title: string;
     price: number;
     images: string[];
+    description?: string;
     categories?: string[];
     discount?: number;
     discountType?: DiscountTypeEnum;
+    finalPrice?: number;
     promotion?: Promotion[];
 }

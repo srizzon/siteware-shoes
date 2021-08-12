@@ -11,6 +11,7 @@ import { ContentLayoutComponent } from './layout/content-layout/content-layout.c
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { environment } from '../environments/environment';
 import { NgSimpleStateModule } from 'ng-simple-state';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NgSimpleStateModule } from 'ng-simple-state';
     NgSimpleStateModule.forRoot({
       enableDevTool: !environment.production,
       enableLocalStorage: true
-    }) 
+    }),
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

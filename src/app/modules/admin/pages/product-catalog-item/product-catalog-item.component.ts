@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { DiscountTypeEnum } from 'src/app/shared/models/discount-type.enum';
 import { Product } from 'src/app/shared/models/product.model';
-import { ProductStore } from 'src/app/shared/state/product/product-store';
+import { Promotion } from 'src/app/shared/models/promotion.model';
+import { ProductStore } from 'src/app/shared/state/product-store';
+import { PromotionStore } from 'src/app/shared/state/promotion-store';
 
 @Component({
   selector: 'app-product-catalog-item',
@@ -10,22 +15,51 @@ import { ProductStore } from 'src/app/shared/state/product/product-store';
 })
 export class ProductCatalogItemComponent implements OnInit {
 
-  constructor(private productStore: ProductStore, private router: Router) { }
+  promotions$: Observable<Promotion[]>;
+
+  form: FormGroup;
+
+  constructor(private productStore: ProductStore, private promotionStore: PromotionStore, private router: Router) {
+    this.form = new FormGroup({
+      title: new FormControl(null, [Validators.required]),
+      price: new FormControl(null, [Validators.required]),
+      images: new FormControl(null, [Validators.required]),
+      description: new FormControl(null),
+      categories: new FormControl(null),
+      discount: new FormControl(null),
+      discountType: new FormControl(null),
+      promotions: new FormControl(null),
+    });
+
+    this.promotions$ = this.promotionStore.selectState();
+  }
 
   ngOnInit(): void {
   }
 
-  addProduct(){
-    setTimeout(() => {
-      let product = new Product();
-      product.id = 7;
-      product.title = "Testando";
-      product.price = 5;
-      product.images = ["https://imgcentauro-a.akamaihd.net/900x900/96448302/kit-de-meias-sapatilha-oxer-com-3-pares-34-a-38-adulto-img.jpg"]
+  addProduct() {
+    console.log("addProduct")
+    let product = new Product();
+    product.title = this.form.get("title")?.value;
+    product.price = this.form.get("price")?.value;
+    product.images = this.form.get("images")?.value?.replace(/\s+/g, '').split(";");
+    product.categories = this.form.get("categories")?.value;
+    product.promotion = this.form.get("promotions")?.value;
+    product.discount = this.form.get("discount")?.value;
+    product.discountType = this.form.get("discountType")?.value;
+    product.finalPrice = this.calculateFinalPrice(product);
 
-      this.productStore.add(product);
-      this.router.navigateByUrl("/admin");
-    }, 1000)
+    this.productStore.add(product);
+    this.router.navigateByUrl("/admin");
+  }
+
+  calculateFinalPrice(product: Product) {
+    if (product.discountType == DiscountTypeEnum.VALUE)
+      return product.price - product.discount!;
+    else if (product.discountType == DiscountTypeEnum.PERCENT)
+      return product.price * (product.discount! / 100);
+
+    return product.price;
   }
 
 }

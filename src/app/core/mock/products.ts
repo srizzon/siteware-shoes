@@ -16,6 +16,7 @@ export const PRODUCTS: Product[] = [
         "price": 249.99,
         "discount": 100,
         "discountType": DiscountTypeEnum.VALUE,
+        "finalPrice": 149.99,
         "promotion": [
             {
                 "id": 1,
@@ -38,6 +39,7 @@ export const PRODUCTS: Product[] = [
         "price": 449.99,
         "discount": 50,
         "discountType": DiscountTypeEnum.PERCENT,
+        "finalPrice": 224.99,
         "promotion": [
             {
                 "id": 1,
@@ -61,7 +63,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         "id": 5,
-        "title": "Kit de Meias Sapatilha Oxer com 3 Pares 34 a 38 - Adulto",
+        "title": "Kit de Meias Sapatilha Oxer - Adulto",
         "images": [
             "https://imgcentauro-a.akamaihd.net/900x900/96448302/kit-de-meias-sapatilha-oxer-com-3-pares-34-a-38-adulto-img.jpg",
             "https://imgcentauro-a.akamaihd.net/900x900/96448302A1/kit-de-meias-sapatilha-oxer-com-3-pares-34-a-38-adulto-img.jpg",
@@ -81,7 +83,7 @@ export const PRODUCTS: Product[] = [
     },
     {
         "id": 6,
-        "title": "Kit de Meias Nike Everyday Cushion Ankle com 3 Pares - Adulto",
+        "title": "Kit de Meias Nike Everyday - Adulto",
         "images": [
             "https://imgcentauro-a.akamaihd.net/900x900/93221001/kit-de-meias-nike-everyday-cushion-ankle-com-3-pares-adulto-img.jpg",
             "https://imgcentauro-a.akamaihd.net/900x900/93221001A1/kit-de-meias-nike-everyday-cushion-ankle-com-3-pares-adulto-img.jpg",
