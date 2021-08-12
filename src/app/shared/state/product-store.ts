@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSimpleStateBaseStore } from 'ng-simple-state';
+import { map } from 'rxjs/operators';
 import { PRODUCTS } from 'src/app/core/mock/products';
 import { Product } from '../models/product.model';
 
@@ -12,8 +13,16 @@ export class ProductStore extends NgSimpleStateBaseStore<ProductState> {
     return PRODUCTS;
   }
 
-  add(product: Omit<Product, 'id'>): void {
+  get(id: number){
+    return this.selectState(state => state.find(x => x.id === id));
+  }
+
+  add(product: Product): void {
     this.setState(state =>  [...state, {...product, id: Date.now()}]);
+  }
+
+  update(product: Product): void {
+    this.setState(state =>  state.map(item => item.id === product.id ? product : item));
   }
 
   delete(id: number): void {

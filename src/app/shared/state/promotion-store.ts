@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSimpleStateBaseStore } from 'ng-simple-state';
+import { Observable } from 'rxjs';
 import { PROMOTIONS } from 'src/app/core/mock/promotions';
 import { Promotion } from '../models/promotion.model';
 

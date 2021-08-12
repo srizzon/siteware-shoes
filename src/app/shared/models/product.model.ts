@@ -11,5 +11,5 @@ export class Product {
     discount?: number;
     discountType?: DiscountTypeEnum;
     finalPrice?: number;
-    promotion?: Promotion[];
+    promotions?: Promotion[];
 }

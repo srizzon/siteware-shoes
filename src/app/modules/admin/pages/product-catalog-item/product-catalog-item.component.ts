@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/adapters/unsubs-ondestroy.adapter';
 import { DiscountTypeEnum } from 'src/app/shared/models/discount-type.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { Promotion } from 'src/app/shared/models/promotion.model';
@@ -13,13 +13,17 @@ import { PromotionStore } from 'src/app/shared/state/promotion-store';
   templateUrl: './product-catalog-item.component.html',
   styleUrls: ['./product-catalog-item.component.scss']
 })
-export class ProductCatalogItemComponent implements OnInit {
-
-  promotions$: Observable<Promotion[]>;
+export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter implements OnInit {
 
   form: FormGroup;
 
-  constructor(private productStore: ProductStore, private promotionStore: PromotionStore, private router: Router) {
+  productId: number;
+  product: Product;
+  promotions: Promotion[];
+
+  constructor(private productStore: ProductStore, private promotionStore: PromotionStore, private router: Router, private route: ActivatedRoute) {
+    super();
+
     this.form = new FormGroup({
       title: new FormControl(null, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
@@ -31,26 +35,56 @@ export class ProductCatalogItemComponent implements OnInit {
       promotions: new FormControl(null),
     });
 
-    this.promotions$ = this.promotionStore.selectState();
+    this.subs.add(this.promotionStore.selectState().subscribe((result: any) => {
+      this.promotions = result;
+    }));
   }
 
   ngOnInit(): void {
+    this.productId = +this.route.snapshot.paramMap.get('id')!;
+    
+    if(this.productId){
+      this.productStore.get(this.productId).subscribe(
+        (result) => {
+          this.form.patchValue({
+            title: result?.title,
+            price: result?.price,
+            images: result?.images.join(";"),
+            description: result?.description,
+            categories: result?.categories,
+            discount: result?.discount,
+            discountType: result?.discountType,
+            promotions: result?.promotions?.map(x => x.id),
+          });
+        }
+      );
+    }
   }
 
-  addProduct() {
-    console.log("addProduct")
+  async submit() {
+    let product = await this.formToProduct();
+
+    if(this.productId)
+      this.productStore.update(product);
+    else
+      this.productStore.add(product);
+
+    this.router.navigateByUrl("/admin");
+  }
+
+  async formToProduct() {
     let product = new Product();
+    product.id = this.productId;
     product.title = this.form.get("title")?.value;
     product.price = this.form.get("price")?.value;
     product.images = this.form.get("images")?.value?.replace(/\s+/g, '').split(";");
     product.categories = this.form.get("categories")?.value;
-    product.promotion = this.form.get("promotions")?.value;
     product.discount = this.form.get("discount")?.value;
     product.discountType = this.form.get("discountType")?.value;
+    product.promotions = this.promotions.filter(x => this.form.get("promotions")?.value.includes(x.id));
     product.finalPrice = this.calculateFinalPrice(product);
 
-    this.productStore.add(product);
-    this.router.navigateByUrl("/admin");
+    return product;
   }
 
   calculateFinalPrice(product: Product) {

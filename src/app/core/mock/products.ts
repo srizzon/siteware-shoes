@@ -17,7 +17,7 @@ export const PRODUCTS: Product[] = [
         "discount": 100,
         "discountType": DiscountTypeEnum.VALUE,
         "finalPrice": 149.99,
-        "promotion": [
+        "promotions": [
             {
                 "id": 1,
                 "title": "Leve 2 e pague 1",
@@ -40,7 +40,7 @@ export const PRODUCTS: Product[] = [
         "discount": 50,
         "discountType": DiscountTypeEnum.PERCENT,
         "finalPrice": 224.99,
-        "promotion": [
+        "promotions": [
             {
                 "id": 1,
                 "title": "Leve 2 e pague 1",
@@ -73,7 +73,7 @@ export const PRODUCTS: Product[] = [
             "socks"
         ],
         "price": 3.99,
-        "promotion": [
+        "promotions": [
             {
                 "id": 2,
                 "title": "3 por R$10,00",
@@ -93,7 +93,7 @@ export const PRODUCTS: Product[] = [
             "socks"
         ],
         "price": 3.99,
-        "promotion": [
+        "promotions": [
             {
                 "id": 2,
                 "title": "3 por R$10,00",

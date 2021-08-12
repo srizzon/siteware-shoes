@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { BANNERS } from 'src/app/core/mock/banner';
 import { PRODUCTS } from 'src/app/core/mock/products';
+import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/adapters/unsubs-ondestroy.adapter';
 import { DiscountTypeEnum } from 'src/app/shared/models/discount-type.enum';
 import { Product } from 'src/app/shared/models/product.model';
 import { ProductStore } from 'src/app/shared/state/product-store';
@@ -13,18 +14,19 @@ import { ProductStore } from 'src/app/shared/state/product-store';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent extends UnsubscribeOnDestroyAdapter implements OnInit {
 
   images = BANNERS;
   productList$: Observable<Product[]>;
   filterProducts$: Observable<Product[]>;
 
   constructor(route: ActivatedRoute, private productStore: ProductStore){
-    this.productList$ = this.productStore.selectState();
+    super();
 
-    route.queryParams.subscribe(p => {
+    this.productList$ = this.productStore.selectState();
+    this.subs.add(route.queryParams.subscribe(p => {
       this.filter(p.category);
-    });
+    }));
   }
 
   ngOnInit(): void {
