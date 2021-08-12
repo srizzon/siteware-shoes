@@ -7,7 +7,7 @@
 <div class="products-list">
     <h5>Todos os produtos</h5>
     <div class="products-row">
-        <nb-card *ngFor="let product of filterProducts$ | async" routerLink="{{product.id}}">
+        <nb-card *ngFor="let product of filterProducts$ | async">
             <nb-card-body>
                 <nb-badge *ngFor="let item of product.promotions" [text]="item.title" [status]="item.status"
                     position="top right"></nb-badge>
@@ -16,14 +16,14 @@
                     <img *ngFor="let image of product.images" [src]="image" alt="">
                 </ngx-glide>
 
-                <strong>{{product.title}}</strong>
+                <strong routerLink="{{product.id}}">{{product.title}}</strong>
 
                 <div class="prices">
                     <span *ngIf="product.finalPrice" class="old">R${{product.price}}</span>
                     <span class="new">R${{product.finalPrice || product.price}}</span>
                 </div>
 
-                <button nbButton status="success">
+                <button nbButton status="success" routerLink="{{product.id}}">
                     <nb-icon icon="shopping-cart-outline"></nb-icon> Comprar
                 </button>
             </nb-card-body>
