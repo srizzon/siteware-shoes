@@ -26,8 +26,13 @@ export class ProductItemComponent extends UnsubscribeOnDestroyAdapter implements
   ngOnInit(): void {
     this.productId = +this.route.snapshot.paramMap.get('id')!;
 
-    if(this.productId)
-      this.currentProduct = this.productStore.getCurrentState().find(x => x.id == this.productId)!;
+    if(this.productId){
+      this.subs.add(this.productStore.get(this.productId).subscribe(
+        (result) => {
+          this.currentProduct = result;
+        }
+      ));
+    }
   }
 
   viewImage(image: string){
@@ -51,6 +56,7 @@ export class ProductItemComponent extends UnsubscribeOnDestroyAdapter implements
       cart.items.push(cartItem);
     
     this.cartStore.updateCart(cart);
+
     this.router.navigateByUrl("/checkout");
   }
 

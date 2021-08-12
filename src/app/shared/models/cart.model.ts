@@ -2,12 +2,16 @@ import { CartItem } from "./cart-item.model";
 
 export class Cart {
     items: CartItem[];
-    quantity: number = 0;
-    subTotal: number = 0;
-    total: number = 0;
-    totalDiscount: number = 0;
+    quantity: number;
+    subTotal: number;
+    total: number;
+    totalDiscount: number;
 
     constructor(){
         this.items = [];
+        this.subTotal = 0;
+        this.total = 0;
+        this.totalDiscount = 0;
+        this.quantity = 0;
     }
 };

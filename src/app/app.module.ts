@@ -12,6 +12,9 @@ import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component'
 import { environment } from '../environments/environment';
 import { NgSimpleStateModule } from 'ng-simple-state';
 import { NgxMaskModule } from 'ngx-mask';
+import { CartStore } from './shared/state/cart-store';
+import { PromotionStore } from './shared/state/promotion-store';
+import { ProductStore } from './shared/state/product-store';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,7 @@ import { NgxMaskModule } from 'ngx-mask';
     NgxMaskModule.forRoot(),
     NbToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [ProductStore, PromotionStore, CartStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

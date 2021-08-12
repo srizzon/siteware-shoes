@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSimpleStateBaseStore } from 'ng-simple-state';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PRODUCTS } from 'src/app/core/mock/products';
 import { Product } from '../models/product.model';
@@ -13,8 +14,8 @@ export class ProductStore extends NgSimpleStateBaseStore<ProductState> {
     return PRODUCTS;
   }
 
-  get(id: number){
-    return this.selectState(state => state.find(x => x.id === id));
+  get(id: number): Observable<Product>{
+    return this.selectState<Product>(state => state.find(x => x.id === id)!);
   }
 
   add(product: Product): void {

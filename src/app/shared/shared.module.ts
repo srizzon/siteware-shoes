@@ -28,16 +28,10 @@ const COMPONENTS = [
   PriceWithDiscountComponent
 ]
 
-const STORES = [
-  ProductStore,
-  PromotionStore,
-  CartStore
-]
-
 @NgModule({
   declarations: [...COMPONENTS],
   imports: [CommonModule, ...MODULES],
   exports: [...COMPONENTS],
-  providers: [...STORES]
+  providers: []
 })
 export class SharedModule { }

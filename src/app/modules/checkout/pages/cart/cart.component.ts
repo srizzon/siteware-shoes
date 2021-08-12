@@ -13,18 +13,14 @@ import { CartStore } from 'src/app/shared/state/cart-store';
 })
 export class CartComponent extends UnsubscribeOnDestroyAdapter implements OnInit {
 
-  cart: Cart;
+  cart$: Observable<Cart>;
 
   constructor(private cartStore: CartStore) {
     super();
   }
 
   ngOnInit(): void {
-    this.subs.add(this.cartStore.selectState().subscribe(
-      (result: any) => {
-        this.cart = result;
-      }
-    ));
+    this.cart$ = this.cartStore.selectState();
   }
 
   updateQuantity(operator: string, currentItem: CartItem){

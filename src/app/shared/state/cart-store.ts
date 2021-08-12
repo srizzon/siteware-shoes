@@ -1,10 +1,6 @@
-import { createDirectiveDefinitionMap } from '@angular/compiler/src/render3/partial/directive';
 import { Injectable } from '@angular/core';
 import { NgSimpleStateBaseStore } from 'ng-simple-state';
-import { Observable } from 'rxjs';
 import { Cart } from '../models/cart.model';
-import { DiscountTypeEnum } from '../models/discount-type.enum';
-import { Product } from '../models/product.model';
 
 @Injectable()
 export class CartStore extends NgSimpleStateBaseStore<Cart> {
@@ -18,8 +14,7 @@ export class CartStore extends NgSimpleStateBaseStore<Cart> {
     }
 
     updateCart(cart: Cart): void {
-        this.setState(state => cart);
-        this.cartCalculate();
+        this.updateAndCalculateCart(cart);
     }
 
     deleteProduct(productId: number): void {
@@ -29,13 +24,15 @@ export class CartStore extends NgSimpleStateBaseStore<Cart> {
         if (deleteProduct.items.length == 0)
             this.restartState();
         else {
-            this.setState(state => deleteProduct);
-            this.cartCalculate();
+            this.updateAndCalculateCart(deleteProduct);
         }
     }
 
-    cartCalculate() {
-        let cart = this.getCurrentState();
+    updateAndCalculateCart(cart: Cart) {
+
+        if(!cart)
+            cart = this.getCurrentState();
+
         cart.subTotal = 0;
         cart.total = 0;
         cart.totalDiscount = 0;

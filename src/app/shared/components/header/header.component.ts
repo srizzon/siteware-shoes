@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NbSidebarService } from '@nebular/theme';
 import { Observable } from 'rxjs';
 import { CartStore } from '../../state/cart-store';
@@ -8,13 +8,13 @@ import { CartStore } from '../../state/cart-store';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements AfterViewInit {
 
   cartQuantity$: Observable<number>;
 
   constructor(private sidebarService: NbSidebarService, private cartStore: CartStore) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.cartQuantity$ = this.cartStore.selectQuantity();
   }
 

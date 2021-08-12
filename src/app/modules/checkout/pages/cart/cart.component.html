@@ -1,4 +1,4 @@
-<nb-card *ngIf="cart">
+<nb-card *ngIf="cart$ | async as cart">
     <nb-card-header>
         <h4>Meu carrinho</h4>
 
