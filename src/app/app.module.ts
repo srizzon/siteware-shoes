@@ -33,7 +33,7 @@ import { NgxMaskModule } from 'ngx-mask';
       enableDevTool: !environment.production,
       enableLocalStorage: true
     }),
-    NgxMaskModule.forRoot(),
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

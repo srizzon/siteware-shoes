@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SIZES } from 'src/app/core/mock/sizes';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/adapters/unsubs-ondestroy.adapter';
 import { DiscountTypeEnum } from 'src/app/shared/models/discount-type.enum';
 import { Product } from 'src/app/shared/models/product.model';
@@ -20,6 +21,7 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
   productId: number;
   product: Product;
   promotions: Promotion[];
+  sizes = SIZES;
 
   constructor(private productStore: ProductStore, private promotionStore: PromotionStore, private router: Router, private route: ActivatedRoute) {
     super();
@@ -33,6 +35,7 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
       discount: new FormControl(null),
       discountType: new FormControl(null),
       promotions: new FormControl(null),
+      sizes: new FormControl(null),
     });
 
     this.subs.add(this.promotionStore.selectState().subscribe((result: any) => {
@@ -55,6 +58,7 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
             discount: result?.discount,
             discountType: result?.discountType,
             promotions: result?.promotions?.map(x => x.id),
+            sizes: result?.sizes,
           });
         }
       );
@@ -82,8 +86,9 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
     product.categories = this.form.get("categories")?.value;
     product.discount = this.form.get("discount")?.value;
     product.discountType = this.form.get("discountType")?.value;
-    product.promotions = this.promotions.filter(x => this.form.get("promotions")?.value.includes(x.id));
+    product.promotions = this.promotions.filter(x => this.form.get("promotions")?.value?.includes(x.id));
     product.finalPrice = this.calculateFinalPrice(product);
+    product.sizes = this.form.get("sizes")?.value;
 
     return product;
   }
@@ -94,7 +99,7 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
     else if (product.discountType == DiscountTypeEnum.PERCENT)
       return product.price * (product.discount! / 100);
 
-    return product.price;
+    return undefined;
   }
 
 }

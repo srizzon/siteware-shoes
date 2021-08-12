@@ -64,13 +64,22 @@
                         </nb-select>
                     </div>
                 </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label class="label">Tamanhos</label>
+                        <nb-select multiple fullWidth placeholder="Tamanhos" formControlName="sizes">
+                            <nb-option [value]="size" *ngFor="let size of sizes">{{size}}</nb-option>
+                        </nb-select>
+                    </div>
+                </div>
             </div>
 
             <div class="row">
                 <div class="col-12">
                     <div class="form-group">
                         <label class="label">Imagens*</label>
-                        <textarea nbInput fullWidth rows="3" formControlName="images"></textarea>
+                        <textarea nbInput fullWidth rows="3" placeholder="Separe os links com ';'" formControlName="images"></textarea>
+                        <label class="label">Separe os links com ';'</label>
                     </div>
                 </div>
             </div>

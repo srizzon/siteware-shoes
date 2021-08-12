@@ -14,6 +14,7 @@ export class ProductItemComponent extends UnsubscribeOnDestroyAdapter implements
   productId: number;
   currentProduct: Product;
   currentImage: string;
+  currentSize: number | undefined;
 
   constructor(private route: ActivatedRoute, private productStore: ProductStore) {
     super();
@@ -33,6 +34,13 @@ export class ProductItemComponent extends UnsubscribeOnDestroyAdapter implements
 
   viewImage(image: string){
     this.currentImage = image;
+  }
+
+  changeCurrentSize(size: number){
+    if(this.currentSize === size)
+      this.currentSize = undefined;
+    else
+      this.currentSize = size;
   }
 
   addToCart(){
