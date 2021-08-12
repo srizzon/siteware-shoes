@@ -3,4 +3,5 @@ export class Promotion {
     title: string;
     status: string;
     description?: string;
+    isActive?: boolean;
 }

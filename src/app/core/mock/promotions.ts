@@ -8,7 +8,7 @@ export const PROMOTIONS = [
     {
         "id": 2,
         "title": "3 por R$10,00",
-        "status": "danger",
+        "status": "warning",
         "description": "Pague R$10,00 na compra de 3 produtos iguais"
     }
 ]

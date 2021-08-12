@@ -58,7 +58,7 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
             categories: result?.categories,
             discount: result?.discount,
             discountType: result?.discountType,
-            promotions: result?.promotions?.map(x => x.id),
+            promotions: result?.promotions?.find(x => x.id)?.id,
             sizes: result?.sizes,
           });
         }
@@ -85,14 +85,14 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
     let product = new Product();
     product.id = this.productId;
     product.title = this.form.get("title")?.value;
-    product.price = this.form.get("price")?.value;
+    product.price = +Number(this.form.get("price")?.value).toFixed(2);
     product.images = this.form.get("images")?.value?.replace(/\s+/g, '').split(";");
     product.description = this.form.get("description")?.value;
     product.categories = this.form.get("categories")?.value;
     product.discount = this.form.get("discount")?.value;
     product.discountType = this.form.get("discountType")?.value;
-    product.promotions = this.promotions.filter(x => this.form.get("promotions")?.value?.includes(x.id));
-    product.finalPrice = this.calculateFinalPrice(product);
+    product.promotions = this.promotions.filter(x => this.form.get("promotions")?.value == x.id);
+    product.finalPrice = +Number(this.calculateFinalPrice(product)).toFixed(2);
     product.sizes = this.form.get("sizes")?.value;
 
     return product;
@@ -102,7 +102,7 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
     if (product.discountType == DiscountTypeEnum.VALUE)
       return product.price - product.discount!;
     else if (product.discountType == DiscountTypeEnum.PERCENT)
-      return product.price * (product.discount! / 100);
+      return product.price - (product.price * (+product.discount! / 100));
 
     return undefined;
   }

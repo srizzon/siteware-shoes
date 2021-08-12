@@ -59,7 +59,7 @@
                 <div class="col-4">
                     <div class="form-group">
                         <label class="label">Promoções</label>
-                        <nb-select multiple fullWidth placeholder="Promoções" formControlName="promotions">
+                        <nb-select fullWidth placeholder="Promoções" formControlName="promotions">
                             <nb-option [value]="promotion.id" *ngFor="let promotion of promotions">{{promotion.title}}</nb-option>
                         </nb-select>
                     </div>

@@ -25,16 +25,18 @@
                             </div>
 
                             <div class="col-10 info">
-                                <label class="label">Tamanho: 42</label>
+                                <label *ngIf="item.product.selectedSize" class="label">Tamanho: {{item.product.selectedSize}}</label>
                                 <label class="label">Vendido e entregue por: Siteware Shoes</label>
 
-                                <nb-badge *ngFor="let promo of item.product.promotions" [text]="promo.title" [status]="promo.status" nbTooltip="{{promo.description}}">
-                                </nb-badge>
+                                <div *ngFor="let promo of item.product.promotions">
+                                    <nb-badge [text]="promo.title" [status]="promo.isActive ? promo.status : 'basic'" nbTooltip="{{promo.description}}">
+                                    </nb-badge>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-2 quantity">
+                            <div class="col-8 quantity">
                                 <button nbButton status="primary" size="tiny" (click)="updateQuantity('minus', item)">
                                     <nb-icon icon="minus-outline"></nb-icon>
                                 </button>
@@ -42,9 +44,15 @@
                                 <button nbButton status="primary" size="tiny"(click)="updateQuantity('plus', item)">
                                     <nb-icon icon="plus-outline"></nb-icon>
                                 </button>
+
+                                <div *ngFor="let promo of item.product.promotions">
+                                    <label class="label" *ngIf="promo.isActive">
+                                        Promoção ativada!
+                                    </label>
+                                </div>
                             </div>
 
-                            <div class="col-10 prices">
+                            <div class="col-4 prices">
                                 <price-with-discount [product]="item.product"></price-with-discount>
                             </div>
                         </div>
@@ -73,7 +81,7 @@
                             <div>
                                 Descontos: <b>R${{cart.totalDiscount}}</b> 
                             </div>
-                            <div>
+                            <div class="total">
                                 Total: <b>R${{cart.total}}</b> 
                             </div>
                         </div>

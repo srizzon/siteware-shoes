@@ -42,8 +42,10 @@ export class ProductItemComponent extends UnsubscribeOnDestroyAdapter implements
   changeCurrentSize(size: number){
     if(this.currentSize === size)
       this.currentSize = undefined;
-    else
+    else {
       this.currentSize = size;
+      this.currentProduct.selectedSize = this.currentSize;
+    }
   }
 
   addToCart(){

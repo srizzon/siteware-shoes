@@ -30,7 +30,7 @@ export class CartStore extends NgSimpleStateBaseStore<Cart> {
 
     updateAndCalculateCart(cart: Cart) {
 
-        if(!cart)
+        if (!cart)
             cart = this.getCurrentState();
 
         cart.subTotal = 0;
@@ -40,12 +40,29 @@ export class CartStore extends NgSimpleStateBaseStore<Cart> {
 
         if (cart.items && cart.items.length > 0) {
             cart.items.map((item) => {
-                cart.subTotal = +Number(cart.total + (item.product.price * item.quantity)).toFixed(2);
-                cart.total = +Number(cart.total + ((item.product.finalPrice || item.product.price) * item.quantity)).toFixed(2);
+                cart.subTotal = +Number(cart.total + ((item.product.finalPrice || item.product.price) * item.quantity)).toFixed(2);
 
-                if (item.product.discount)
-                    cart.totalDiscount = +Number(cart.totalDiscount + (item.product.price - item.product.finalPrice!) * item.quantity).toFixed(2);
-                
+                if (item.product.promotions?.some(x => x.id == 1) && item.quantity == 2) {
+                    //Leve 2 e pague 1
+                    cart.total = +Number(cart.total + (item.product.finalPrice || item.product.price)).toFixed(2);
+                    cart.totalDiscount = +Number(cart.totalDiscount + (item.product.finalPrice || item.product.price)).toFixed(2);
+
+                    item.product.promotions.map(x => x.id == 1 ? x.isActive = true : x);
+                } else if (item.product.promotions?.some(x => x.id == 2) && item.quantity == 3) {
+                    //3 e por R$10,00
+                    cart.total = +Number(cart.total + 10).toFixed(2);
+                    cart.totalDiscount = +Number(cart.totalDiscount + (item.product.price * item.quantity) - 10).toFixed(2);
+
+                    item.product.promotions.map(x => x.id == 2 ? x.isActive = true : x);
+                } else {
+                    cart.total = +Number(cart.total + ((item.product.finalPrice || item.product.price) * item.quantity)).toFixed(2);
+
+                    if (item.product.discount)
+                        cart.totalDiscount = +Number(cart.totalDiscount + (item.product.price - item.product.finalPrice!) * item.quantity).toFixed(2);
+
+                    item.product.promotions?.map(x => x.isActive = false);
+                }
+
                 cart.quantity = cart.quantity + item.quantity;
 
                 return item;
