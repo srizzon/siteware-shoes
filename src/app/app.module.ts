@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbMenuModule, NbSidebarModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbToastrModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { SharedModule } from './shared/shared.module';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
@@ -33,7 +33,8 @@ import { NgxMaskModule } from 'ngx-mask';
       enableDevTool: !environment.production,
       enableLocalStorage: true
     }),
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NbToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

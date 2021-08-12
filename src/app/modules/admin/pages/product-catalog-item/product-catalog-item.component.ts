@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NbToastrService } from '@nebular/theme';
 import { SIZES } from 'src/app/core/mock/sizes';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/adapters/unsubs-ondestroy.adapter';
 import { DiscountTypeEnum } from 'src/app/shared/models/discount-type.enum';
@@ -23,7 +24,7 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
   promotions: Promotion[];
   sizes = SIZES;
 
-  constructor(private productStore: ProductStore, private promotionStore: PromotionStore, private router: Router, private route: ActivatedRoute) {
+  constructor(private productStore: ProductStore, private promotionStore: PromotionStore, private router: Router, private route: ActivatedRoute, private toastrService: NbToastrService) {
     super();
 
     this.form = new FormGroup({
@@ -45,8 +46,8 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
 
   ngOnInit(): void {
     this.productId = +this.route.snapshot.paramMap.get('id')!;
-    
-    if(this.productId){
+
+    if (this.productId) {
       this.productStore.get(this.productId).subscribe(
         (result) => {
           this.form.patchValue({
@@ -68,10 +69,14 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
   async submit() {
     let product = await this.formToProduct();
 
-    if(this.productId)
+    if (this.productId){
       this.productStore.update(product);
-    else
+      this.toastrService.success("", "Produto atualizado com sucesso!");
+    }
+    else{
       this.productStore.add(product);
+      this.toastrService.success("", "Produto criado com sucesso!");
+    }
 
     this.router.navigateByUrl("/admin");
   }

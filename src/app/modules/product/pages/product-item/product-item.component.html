@@ -8,13 +8,15 @@
                 <img class="current-image" [src]="currentImage || currentProduct.images[0]" alt="">
 
                 <ngx-glide [showArrows]="false" [perView]="3" type="carousel">
-                    <img width="50" *ngFor="let image of currentProduct.images" [src]="image" alt="" (click)="viewImage(image)">
+                    <img width="50" *ngFor="let image of currentProduct.images" [src]="image" alt=""
+                        (click)="viewImage(image)">
                 </ngx-glide>
             </div>
-        
-            <div class="col-6 informations">
+
+            <div class="col-7 informations">
                 <div class="flex-horizontal">
-                    <nb-badge *ngFor="let item of currentProduct.promotions" [text]="item.title" [status]="item.status" position="top left" nbTooltip="{{item.description}}"></nb-badge>
+                    <nb-badge *ngFor="let item of currentProduct.promotions" [text]="item.title" [status]="item.status"
+                        position="top left" nbTooltip="{{item.description}}"></nb-badge>
                 </div>
 
                 <div *ngIf="currentProduct.description">
@@ -26,7 +28,9 @@
                     <label class="label">Tamanho</label> <br>
 
                     <div class="flex-horizontal">
-                        <button *ngFor="let size of currentProduct.sizes" nbButton size="small" [status]="currentSize == size ? 'primary' : 'basic'" (click)="changeCurrentSize(size)">{{size}}</button>
+                        <button *ngFor="let size of currentProduct.sizes" nbButton size="small"
+                            [status]="currentSize == size ? 'primary' : 'basic'"
+                            (click)="changeCurrentSize(size)">{{size}}</button>
                     </div>
                 </div>
 
@@ -36,9 +40,20 @@
                 </div>
 
                 <div>
-                    <button nbButton fullWidth status="success" (click)="addToCart()" [disabled]="currentProduct.sizes && !currentSize">
+                    <button nbButton fullWidth status="success" (click)="addToCart()"
+                        [disabled]="currentProduct.sizes && !currentSize">
                         <nb-icon icon="shopping-cart-outline"></nb-icon> Comprar
                     </button>
+                </div>
+
+                <div class="row">
+                    <nb-form-field class="col-4">
+                        <input type="text" nbInput fullWidth placeholder="CEP" mask="00000-000">
+                        <button nbSuffix nbButton ghost>
+                            <nb-icon icon="search-outline">
+                            </nb-icon>
+                        </button>
+                    </nb-form-field>
                 </div>
             </div>
         </div>
