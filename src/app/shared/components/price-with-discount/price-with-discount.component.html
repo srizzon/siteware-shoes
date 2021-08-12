@@ -1,0 +1,4 @@
+<div class="prices">
+    <span *ngIf="product.finalPrice" class="old">R${{product.price}}</span>
+    <span class="new">R${{product.finalPrice || product.price}}</span>
+</div>

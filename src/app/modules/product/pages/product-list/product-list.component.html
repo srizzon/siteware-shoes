@@ -18,10 +18,7 @@
 
                 <strong routerLink="{{product.id}}">{{product.title}}</strong>
 
-                <div class="prices">
-                    <span *ngIf="product.finalPrice" class="old">R${{product.price}}</span>
-                    <span class="new">R${{product.finalPrice || product.price}}</span>
-                </div>
+                <price-with-discount [product]="product"></price-with-discount>
 
                 <button nbButton status="success" routerLink="{{product.id}}">
                     <nb-icon icon="shopping-cart-outline"></nb-icon> Comprar

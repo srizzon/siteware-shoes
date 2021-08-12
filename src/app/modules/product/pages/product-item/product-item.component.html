@@ -34,10 +34,7 @@
                     </div>
                 </div>
 
-                <div class="prices">
-                    <span *ngIf="currentProduct.finalPrice" class="old">R${{currentProduct.price}}</span>
-                    <span class="new">R${{currentProduct.finalPrice || currentProduct.price}}</span>
-                </div>
+                <price-with-discount [product]="currentProduct"></price-with-discount>
 
                 <div>
                     <button nbButton fullWidth status="success" (click)="addToCart()"

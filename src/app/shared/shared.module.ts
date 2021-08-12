@@ -13,6 +13,7 @@ import { ProductStore } from './state/product-store';
 import { PromotionStore } from './state/promotion-store';
 import { CartStore } from './state/cart-store';
 import { RouterModule } from '@angular/router';
+import { PriceWithDiscountComponent } from './components/price-with-discount/price-with-discount.component';
 
 const MODULES = [
   NbLayoutModule,
@@ -22,10 +23,21 @@ const MODULES = [
   RouterModule
 ];
 
+const COMPONENTS = [
+  HeaderComponent,
+  PriceWithDiscountComponent
+]
+
+const STORES = [
+  ProductStore,
+  PromotionStore,
+  CartStore
+]
+
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [...COMPONENTS],
   imports: [CommonModule, ...MODULES],
-  exports: [HeaderComponent],
-  providers: [ProductStore, PromotionStore, CartStore]
+  exports: [...COMPONENTS],
+  providers: [...STORES]
 })
 export class SharedModule { }

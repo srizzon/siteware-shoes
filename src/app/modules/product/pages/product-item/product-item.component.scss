@@ -31,17 +31,3 @@ nb-badge {
     flex-direction: column;
     gap: 20px;
 }
-
-.prices {
-    .old {
-        color: gray;
-        font-size: 16px;
-        text-decoration: line-through;
-        margin: 0 10px;
-    }
-
-    .new {
-        font-size: 32px;
-        font-weight: bold;
-    }
-}

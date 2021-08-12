@@ -45,8 +45,7 @@
                             </div>
 
                             <div class="col-10 prices">
-                                <span *ngIf="item.product.finalPrice" class="old">R${{item.product.price}}</span>
-                                <span class="new">R${{item.product.finalPrice || item.product.price}}</span>
+                                <price-with-discount [product]="item.product"></price-with-discount>
                             </div>
                         </div>
                         

@@ -7,6 +7,7 @@ import { NgxGlideModule } from 'ngx-glide';
 import { NbAlertModule, NbBadgeModule, NbButtonModule, NbCardModule, NbFormFieldModule, NbIconModule, NbInputModule, NbLayoutModule, NbSelectModule, NbTooltipModule } from '@nebular/theme';
 import { ProductItemComponent } from './pages/product-item/product-item.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { NgxMaskModule } from 'ngx-mask';
   imports: [
     CommonModule,
     ProductRoutingModule,
+    SharedModule,
     NgxGlideModule,
     NbCardModule,
     NbBadgeModule,
