@@ -16,14 +16,8 @@
                 <div class="col-2">
                     <div class="form-group">
                         <label class="label">Preço*</label>
-                        <input type="text" mask="separator.2" thousandSeparator="." prefix="R$ " nbInput fullWidth
-                            placeholder="Preço" formControlName="price">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="form-group">
-                        <label class="label">Desconto</label>
-                        <input type="text" nbInput fullWidth placeholder="Desconto" formControlName="discount">
+                        <input type="text" nbInput fullWidth
+                            placeholder="Preço" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" formControlName="price">
                     </div>
                 </div>
                 <div class="col-3">
@@ -33,6 +27,14 @@
                             <nb-option value="value">Valor</nb-option>
                             <nb-option value="percent">Percentual</nb-option>
                         </nb-select>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="label">Desconto</label>
+                        <input *ngIf="!form.get('discountType')?.value" type="text" nbInput fullWidth placeholder="Desconto" readonly formControlName="discount">
+                        <input *ngIf="form.get('discountType')?.value == 'value'" type="text" nbInput fullWidth placeholder="Desconto" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" formControlName="discount">
+                        <input *ngIf="form.get('discountType')?.value == 'percent'" type="text" nbInput fullWidth placeholder="Desconto" currencyMask [options]="{ prefix: '', suffix: '%', precision: 0, align: 'left' }" formControlName="discount">
                     </div>
                 </div>
             </div>
@@ -78,7 +80,7 @@
                 <div class="col-12">
                     <div class="form-group">
                         <label class="label">Imagens*</label>
-                        <textarea nbInput fullWidth rows="3" placeholder="Separe os links com ';'" formControlName="images"></textarea>
+                        <textarea nbInput fullWidth rows="3" placeholder="Coloque aqui os links das imagens do produto" formControlName="images"></textarea>
                         <label class="label">Separe os links com ';'</label>
                     </div>
                 </div>

@@ -5,8 +5,8 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { ProductCatalogComponent } from './pages/product-catalog/product-catalog.component';
 import { NbAlertModule, NbBadgeModule, NbButtonModule, NbCardModule, NbFormFieldModule, NbIconModule, NbInputModule, NbLayoutModule, NbListModule, NbPopoverModule, NbSelectModule, NbTreeGridModule } from '@nebular/theme';
 import { ProductCatalogItemComponent } from './pages/product-catalog-item/product-catalog-item.component';
-import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxCurrencyModule } from 'ngx-currency';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NbInputModule,
     NbSelectModule,
     NbFormFieldModule,
-    NgxMaskModule    
+    NgxCurrencyModule
   ]
 })
 export class AdminModule { }
