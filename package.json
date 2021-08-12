@@ -28,6 +28,7 @@
     "datatables.net-dt": "^1.10.20",
     "eva-icons": "^1.1.2",
     "jquery": "^3.4.1",
+    "ng-simple-state": "^2.0.7",
     "ngx-glide": "^12.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

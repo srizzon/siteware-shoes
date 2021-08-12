@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of products">
+                    <tr *ngFor="let product of productList$ | async">
                         <td>
                             <img width="100" [src]="product.images[0]" alt="">
                         </td>
@@ -32,12 +32,12 @@
                             R${{product.price}}
                         </td>
                         <td class="category">
-                            <button nbButton size="tiny" *ngFor="let category of product.category">
+                            <button nbButton size="tiny" *ngFor="let category of product.categories">
                                 {{category}}
                             </button>
                         </td>
                         <td>
-                            <button nbButton size="tiny" [status]="promo.status" *ngFor="let promo of product.promo">
+                            <button nbButton size="tiny" [status]="promo.status" *ngFor="let promo of product.promotion">
                                 {{promo.title}}
                             </button>
                         </td>

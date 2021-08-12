@@ -7,9 +7,9 @@
 <div class="products-list">
     <h5>Todos os produtos</h5>
     <div class="products-row">
-        <nb-card *ngFor="let product of filterProducts" routerLink="{{product.id}}">
+        <nb-card *ngFor="let product of productList$ | async" routerLink="{{product.id}}">
             <nb-card-body>
-                <nb-badge *ngFor="let item of product.promo" [text]="item.title" [status]="item.status" position="top right"></nb-badge>
+                <nb-badge *ngFor="let item of product.promotion" [text]="item.title" [status]="item.status" position="top right"></nb-badge>
 
                 <ngx-glide [showArrows]="false" [perView]="1" [focusAt]="0" type="carousel">
                     <img *ngFor="let image of product.images" [src]="image" alt="">
@@ -18,7 +18,7 @@
                 <strong>{{product.title}}</strong>
                 
                 <div class="prices">
-                    <span *ngIf="product.oldPrice" class="old">R${{product.oldPrice}}</span>
+                    <span *ngIf="product.price" class="old">R${{product.price}}</span>
                     <span class="new">R${{product.price}}</span>
                 </div>
 

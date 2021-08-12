@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { PRODUCTS } from 'src/app/core/mock/products';
+import { Product } from 'src/app/shared/models/product.model';
+import { ProductStore } from 'src/app/shared/state/product/product-store';
 
 @Component({
   selector: 'app-product-catalog',
@@ -8,17 +11,16 @@ import { PRODUCTS } from 'src/app/core/mock/products';
 })
 export class ProductCatalogComponent implements OnInit {
 
-  products = PRODUCTS;
+  productList$: Observable<Product[]>;
 
-  constructor() { }
+  constructor(private productStore: ProductStore){
+    this.productList$ = this.productStore.selectState();
+  }
 
   ngOnInit(): void { }
 
   delete(id: number){
-    //Change state
-    this.products = this.products.filter((p) => {
-      return p.id != id;
-    });
+    this.productStore.delete(id);
   }
 
 }

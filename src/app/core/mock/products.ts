@@ -1,4 +1,7 @@
-export const PRODUCTS = [
+import { DiscountTypeEnum } from "src/app/shared/models/discount-type.enum";
+import { Product } from "src/app/shared/models/product.model";
+
+export const PRODUCTS: Product[] = [
     {
         "id": 1,
         "title": "Tênis Nike Revolution 5 - Feminino",
@@ -7,13 +10,13 @@ export const PRODUCTS = [
             "https://imgcentauro-a.akamaihd.net/900x900/94290631A1/tenis-nike-revolution-5-feminino-img.jpg",
             "https://imgcentauro-a.akamaihd.net/900x900/94290631A4/tenis-nike-revolution-5-feminino-img.jpg"
         ],
-        "category": [
-            "shoes",
-            "shocks"
+        "categories": [
+            "shoes"
         ],
-        "price": "249,99",
-        "oldPrice": "329,99",
-        "promo": [
+        "price": 249.99,
+        "discount": 100,
+        "discountType": DiscountTypeEnum.VALUE,
+        "promotion": [
             {
                 "id": 1,
                 "title": "Leve 2 e pague 1",
@@ -29,12 +32,13 @@ export const PRODUCTS = [
             "https://imgcentauro-a.akamaihd.net/900x900/95077714A1/tenis-asics-patriot-12-noosa-masculino-img.jpg",
             "https://imgcentauro-a.akamaihd.net/900x900/95077714A7/tenis-asics-patriot-12-noosa-masculino-img.jpg"
         ],
-        "category": [
+        "categories": [
             "shoes"
         ],
-        "price": "199,99",
-        "oldPrice": "279,99",
-        "promo": [
+        "price": 449.99,
+        "discount": 50,
+        "discountType": DiscountTypeEnum.PERCENT,
+        "promotion": [
             {
                 "id": 1,
                 "title": "Leve 2 e pague 1",
@@ -50,10 +54,10 @@ export const PRODUCTS = [
             "https://imgcentauro-a.akamaihd.net/900x900/95707858A1/tenis-mizuno-wave-prophecy-x-masculino-img.jpg",
             "https://imgcentauro-a.akamaihd.net/900x900/95707858A7/tenis-mizuno-wave-prophecy-x-masculino-img.jpg"
         ],
-        "category": [
+        "categories": [
             "shoes"
         ],
-        "price": "1.499,99"
+        "price": 449.99
     },
     {
         "id": 5,
@@ -63,11 +67,11 @@ export const PRODUCTS = [
             "https://imgcentauro-a.akamaihd.net/900x900/96448302A1/kit-de-meias-sapatilha-oxer-com-3-pares-34-a-38-adulto-img.jpg",
             "https://imgcentauro-a.akamaihd.net/900x900/96448302A8/kit-de-meias-sapatilha-oxer-com-3-pares-34-a-38-adulto-img.jpg"
         ],
-        "category": [
+        "categories": [
             "socks"
         ],
-        "price": "3,99",
-        "promo": [
+        "price": 3.99,
+        "promotion": [
             {
                 "id": 2,
                 "title": "3 por R$10,00",
@@ -83,11 +87,11 @@ export const PRODUCTS = [
             "https://imgcentauro-a.akamaihd.net/900x900/93221001A1/kit-de-meias-nike-everyday-cushion-ankle-com-3-pares-adulto-img.jpg",
             "https://imgcentauro-a.akamaihd.net/900x900/93221001A2/kit-de-meias-nike-everyday-cushion-ankle-com-3-pares-adulto-img.jpg"
         ],
-        "category": [
+        "categories": [
             "socks"
         ],
-        "price": "3,99",
-        "promo": [
+        "price": 3.99,
+        "promotion": [
             {
                 "id": 2,
                 "title": "3 por R$10,00",

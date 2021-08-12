@@ -9,6 +9,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { SharedModule } from './shared/shared.module';
 import { ContentLayoutComponent } from './layout/content-layout/content-layout.component';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
+import { environment } from '../environments/environment';
+import { NgSimpleStateModule } from 'ng-simple-state';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,10 @@ import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component'
     NbLayoutModule,
     NbEvaIconsModule,
     SharedModule,
+    NgSimpleStateModule.forRoot({
+      enableDevTool: !environment.production,
+      enableLocalStorage: true
+    }) 
   ],
   providers: [],
   bootstrap: [AppComponent]
