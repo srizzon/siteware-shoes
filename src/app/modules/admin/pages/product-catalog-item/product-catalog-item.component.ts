@@ -52,7 +52,7 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
         (result) => {
           this.form.patchValue({
             title: result?.title,
-            price: result?.price,
+            price: result?.price?.toString().replace('.', ','),
             images: result?.images.join(";"),
             description: result?.description,
             categories: result?.categories,
@@ -85,7 +85,7 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
     let product = new Product();
     product.id = this.productId;
     product.title = this.form.get("title")?.value;
-    product.price = +Number(this.form.get("price")?.value).toFixed(2);
+    product.price = +Number(this.form.get("price")?.value.replace(',', '.')).toFixed(2);
     product.images = this.form.get("images")?.value?.replace(/\s+/g, '').split(";");
     product.description = this.form.get("description")?.value;
     product.categories = this.form.get("categories")?.value;
