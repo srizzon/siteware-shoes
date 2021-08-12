@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     AdminRoutingModule,
     NbLayoutModule,
     NbCardModule,
@@ -29,9 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NbInputModule,
     NbSelectModule,
     NbFormFieldModule,
-    NgxMaskModule,
-    FormsModule,
-    ReactiveFormsModule
+    NgxMaskModule    
   ]
 })
 export class AdminModule { }

@@ -78,6 +78,7 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
     product.title = this.form.get("title")?.value;
     product.price = this.form.get("price")?.value;
     product.images = this.form.get("images")?.value?.replace(/\s+/g, '').split(";");
+    product.description = this.form.get("description")?.value;
     product.categories = this.form.get("categories")?.value;
     product.discount = this.form.get("discount")?.value;
     product.discountType = this.form.get("discountType")?.value;

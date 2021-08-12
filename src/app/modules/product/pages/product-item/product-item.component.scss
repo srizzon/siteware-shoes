@@ -1,0 +1,47 @@
+nb-badge {
+    position: relative;
+    width: fit-content;
+}
+
+.images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .current-image {
+        border: 1px solid rgb(231, 231, 231);
+    }
+
+    img {
+        
+        padding: 30px;
+        margin: 0 10px;
+        object-fit: cover;
+    }
+}
+
+.informations {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .promotions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+.prices {
+    .old {
+        color: gray;
+        font-size: 16px;
+        text-decoration: line-through;
+        margin-right: 10px;
+    }
+
+    .new {
+        font-size: 32px;
+        font-weight: bold;
+    }
+}

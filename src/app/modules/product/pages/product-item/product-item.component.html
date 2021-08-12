@@ -1,11 +1,36 @@
-<nb-layout class="product-item">
-    <nb-layout-column class="images">
-        <ngx-glide [showArrows]="false" [perView]="1" [focusAt]="0" type="carousel">
-            <img *ngFor="let image of currentProduct.images" [src]="image" alt="">
-        </ngx-glide>
-    </nb-layout-column>
-
-    <nb-layout-column class="informations">
+<nb-card *ngIf="currentProduct">
+    <nb-card-header>
         <h4>{{currentProduct.title}}</h4>
-    </nb-layout-column>
-</nb-layout>
+    </nb-card-header>
+    <nb-card-body>
+        <div class="product-item">
+            <div class="col-5 images">
+                <img class="current-image" [src]="currentImage || currentProduct.images[0]" alt="">
+
+                <ngx-glide [showArrows]="false" [perView]="3" type="carousel">
+                    <img width="50" *ngFor="let image of currentProduct.images" [src]="image" alt="" (click)="viewImage(image)">
+                </ngx-glide>
+            </div>
+        
+            <div class="col-6 informations">
+                <div class="promotions">
+                    <nb-badge *ngFor="let item of currentProduct.promotions" [text]="item.title" [status]="item.status" position="top left" nbTooltip="{{item.description}}"></nb-badge>
+                </div>
+
+                <div *ngIf="currentProduct.description">
+                    <label class="label">Descrição</label> <br>
+                    <span>{{currentProduct.description}}</span>
+                </div>
+
+                <div class="prices">
+                    <span *ngIf="currentProduct.finalPrice" class="old">R${{currentProduct.price}}</span>
+                    <span class="new">R${{currentProduct.finalPrice || currentProduct.price}}</span>
+                </div>
+
+                <div>
+                    <button nbButton fullWidth status="success" (click)="addToCart()"><nb-icon icon="shopping-cart-outline"></nb-icon> Comprar</button>
+                </div>
+            </div>
+        </div>
+    </nb-card-body>
+</nb-card>

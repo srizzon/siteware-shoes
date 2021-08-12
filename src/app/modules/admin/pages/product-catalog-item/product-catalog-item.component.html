@@ -38,7 +38,16 @@
             </div>
 
             <div class="row">
-                <div class="col-4">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label class="label">Descrição</label>
+                        <textarea nbInput fullWidth rows="5" formControlName="description"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
                     <div class="form-group">
                         <label class="label">Categorias</label>
                         <nb-select multiple fullWidth placeholder="Categorias" formControlName="categories">
@@ -58,7 +67,7 @@
             </div>
 
             <div class="row">
-                <div class="col-8">
+                <div class="col-12">
                     <div class="form-group">
                         <label class="label">Imagens*</label>
                         <textarea nbInput fullWidth rows="3" formControlName="images"></textarea>
@@ -69,7 +78,7 @@
             <div class="row">
                 <div class="col-4">
                     <div class="form-group">
-                        <button nbButton size="small" status="primary" (click)="submit()" [disabled]="form.invalid">
+                        <button nbButton size="small" status="primary" (click)="submit()" [disabled]="form.invalid || !form.dirty">
                             Salvar
                         </button>
                         <button nbButton ghost size="small" routerLink="/admin">

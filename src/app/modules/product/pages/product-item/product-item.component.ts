@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PRODUCTS } from 'src/app/core/mock/products';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/adapters/unsubs-ondestroy.adapter';
+import { Product } from 'src/app/shared/models/product.model';
+import { ProductStore } from 'src/app/shared/state/product-store';
 
 @Component({
   selector: 'app-product-item',
@@ -10,17 +11,32 @@ import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/adapters/unsubs-onde
 })
 export class ProductItemComponent extends UnsubscribeOnDestroyAdapter implements OnInit {
 
-  products = PRODUCTS;
-  currentProduct: any;
+  productId: number;
+  currentProduct: Product;
+  currentImage: string;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private productStore: ProductStore) {
     super();
   }
 
   ngOnInit(): void {
-    this.subs.add(this.route.params.subscribe(params => {
-      this.currentProduct = this.products.find(p => p.id == params['id']);
-    }));
+    this.productId = +this.route.snapshot.paramMap.get('id')!;
+
+    if(this.productId){
+      this.subs.add(this.productStore.get(this.productId).subscribe(
+        (result) => {
+          this.currentProduct = result!;
+        }
+      ));
+    }
+  }
+
+  viewImage(image: string){
+    this.currentImage = image;
+  }
+
+  addToCart(){
+
   }
 
 }
