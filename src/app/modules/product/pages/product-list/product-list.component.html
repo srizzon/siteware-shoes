@@ -7,20 +7,18 @@
 <div class="products-list">
     <h5>Todos os produtos</h5>
     <div class="products-row">
-        <nb-card *ngFor="let product of filterProducts$ | async">
+        <nb-card *ngFor="let product of filterProducts$ | async" routerLink="{{product.id}}">
             <nb-card-body>
                 <nb-badge *ngFor="let item of product.promotions" [text]="item.title" [status]="item.status"
                     position="top right"></nb-badge>
 
-                <ngx-glide [showArrows]="false" [perView]="1" [focusAt]="0" type="carousel">
-                    <img *ngFor="let image of product.images" [src]="image" alt="">
-                </ngx-glide>
+                <img [src]="product.images[0]" alt="">
 
-                <strong routerLink="{{product.id}}">{{product.title}}</strong>
+                <strong>{{product.title}}</strong>
 
                 <price-with-discount [product]="product"></price-with-discount>
 
-                <button nbButton status="success" routerLink="{{product.id}}">
+                <button nbButton status="success">
                     <nb-icon icon="shopping-cart-outline"></nb-icon> Comprar
                 </button>
             </nb-card-body>

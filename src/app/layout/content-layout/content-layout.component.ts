@@ -10,7 +10,7 @@ export class ContentLayoutComponent {
 
   menu: NbMenuItem[] = [
     {
-      title: 'Home',
+      title: 'Inicio',
       icon: 'home-outline',
       link: '/products',
       home: true,

@@ -17,14 +17,7 @@
             flex-direction: column;
             gap: 20px;
             overflow: hidden;
-
-            strong {
-                cursor: pointer;
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
+            cursor: pointer;
 
             img {
                 object-fit: contain;

@@ -61,11 +61,14 @@
                 </nb-card>
 
                 <div class="empty" *ngIf="cart.items.length == 0">
-                    <button nbButton ghost disabled>
-                        <nb-icon icon="shopping-cart-outline"></nb-icon>
-                        Carrinho vazio
+                    <button nbButton ghost>
+                        Seu carrinho está vazio
                     </button>
-                    
+
+                    <button nbButton status="success" routerLink="/">
+                        <nb-icon icon="shopping-cart-outline"></nb-icon>
+                        Comece a comprar agora
+                    </button>
                 </div>
             </div>
             <div class="col-4">
@@ -86,7 +89,7 @@
                             </div>
                         </div>
 
-                        <button nbButton fullWidth status="success">
+                        <button nbButton fullWidth status="success" [disabled]="cart.total == 0">
                             Finalizar compra
                         </button>
                     </nb-card-body>

@@ -57,8 +57,8 @@ export class ProductCatalogItemComponent extends UnsubscribeOnDestroyAdapter imp
             description: result?.description,
             categories: result?.categories,
             discount: result?.discount,
-            discountType: result?.discountType,
-            promotions: result?.promotions?.find(x => x.id)?.id,
+            discountType: result?.discountType || '',
+            promotions: result?.promotions?.find(x => x.id)?.id || '',
             sizes: result?.sizes,
           });
         }

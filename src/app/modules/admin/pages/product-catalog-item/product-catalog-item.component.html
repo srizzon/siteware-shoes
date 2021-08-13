@@ -24,6 +24,7 @@
                     <div class="form-group">
                         <label class="label">Tipo do desconto</label>
                         <nb-select fullWidth placeholder="Tipo do desconto" formControlName="discountType">
+                            <nb-option value="">Selecione um tipo de desconto</nb-option>
                             <nb-option value="value">Valor</nb-option>
                             <nb-option value="percent">Percentual</nb-option>
                         </nb-select>
@@ -62,6 +63,7 @@
                     <div class="form-group">
                         <label class="label">Promoções</label>
                         <nb-select fullWidth placeholder="Promoções" formControlName="promotions">
+                            <nb-option value="">Selecione uma promoção</nb-option>
                             <nb-option [value]="promotion.id" *ngFor="let promotion of promotions">{{promotion.title}}</nb-option>
                         </nb-select>
                     </div>

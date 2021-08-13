@@ -7,10 +7,25 @@
             <div class="col-5 images">
                 <img class="current-image" [src]="currentImage || currentProduct.images[0]" alt="">
 
-                <ngx-glide [showArrows]="false" [perView]="3" type="carousel">
-                    <img width="50" *ngFor="let image of currentProduct.images" [src]="image" alt=""
-                        (click)="viewImage(image)">
+                <ngx-glide [perView]="3" [showBullets]="false" [arrowLeftTemplate]="arrowLeftTemplate"
+                    [arrowRightTemplate]="arrowRightTemplate">
+                    <div class="border" *ngFor="let image of currentProduct.images">
+                        <img width="80%" [src]="image" alt=""
+                            (click)="viewImage(image)">
+                    </div>
                 </ngx-glide>
+
+                <ng-template #arrowLeftTemplate>
+                    <button nbButton status="primary">
+                        <nb-icon icon="chevron-left-outline"></nb-icon>
+                    </button>
+                </ng-template>
+
+                <ng-template #arrowRightTemplate>
+                    <button nbButton status="primary">
+                        <nb-icon icon="chevron-right-outline"></nb-icon>
+                    </button>
+                </ng-template>
             </div>
 
             <div class="col-7 informations">
