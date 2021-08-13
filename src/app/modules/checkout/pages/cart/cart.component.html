@@ -14,7 +14,7 @@
                     <nb-card-header>
                         <h6>{{item.product.title}}</h6>
 
-                        <button nbButton status="primary" ghost (click)="deleteProduct(item.product)" nbTooltip="Excluir produto">
+                        <button nbButton status="primary" ghost (click)="deleteProduct(item)" nbTooltip="Excluir produto">
                             <nb-icon icon="trash-outline"></nb-icon>
                         </button>
                     </nb-card-header>
@@ -25,7 +25,7 @@
                             </div>
 
                             <div class="col-10 info">
-                                <label *ngIf="item.product.selectedSize" class="label">Tamanho: {{item.product.selectedSize}}</label>
+                                <label *ngIf="item.size" class="label">Tamanho: {{item.size}}</label>
                                 <label class="label">Vendido e entregue por: Siteware Shoes</label>
 
                                 <div *ngFor="let promo of item.product.promotions">

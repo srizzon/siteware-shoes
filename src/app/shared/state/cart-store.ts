@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { NgSimpleStateBaseStore } from 'ng-simple-state';
+import { CartItem } from '../models/cart-item.model';
 import { Cart } from '../models/cart.model';
 
 @Injectable()
@@ -17,14 +18,16 @@ export class CartStore extends NgSimpleStateBaseStore<Cart> {
         this.updateAndCalculateCart(cart);
     }
 
-    deleteProduct(productId: number): void {
-        let deleteProduct = this.getCurrentState();
-        deleteProduct.items = deleteProduct.items.filter(x => x.product.id !== productId);
+    deleteProduct(cartItem: CartItem): void {
+        let currentState = this.getCurrentState();
 
-        if (deleteProduct.items.length == 0)
+        let index = currentState.items.indexOf(cartItem);
+        currentState.items.splice(index, 1);
+
+        if (currentState.items.length == 0)
             this.restartState();
         else {
-            this.updateAndCalculateCart(deleteProduct);
+            this.updateAndCalculateCart(currentState);
         }
     }
 

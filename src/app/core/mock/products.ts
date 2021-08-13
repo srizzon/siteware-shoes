@@ -6,11 +6,11 @@ export const PRODUCTS: Product[] = [
         "id": 1,
         "title": "Tênis Nike Revolution 5 - Feminino",
         "images": [
-            "https://imgcentauro-a.akamaihd.net/900x900/94290631/tenis-nike-revolution-5-feminino-img.jpg",
-            "https://imgcentauro-a.akamaihd.net/900x900/94290631A1/tenis-nike-revolution-5-feminino-img.jpg",
-            "https://imgcentauro-a.akamaihd.net/900x900/94290631A4/tenis-nike-revolution-5-feminino-img.jpg"
+            "https://static.netshoes.com.br/produtos/tenis-nike-revolution-5-feminino/26/HZM-1729-026/HZM-1729-026_zoom1.jpg?ts=1569489067&",
+            "https://static.netshoes.com.br/produtos/tenis-nike-revolution-5-feminino/26/HZM-1729-026/HZM-1729-026_zoom2.jpg?ts=1569489067&",
+            "https://static.netshoes.com.br/produtos/tenis-nike-revolution-5-feminino/26/HZM-1729-026/HZM-1729-026_zoom4.jpg?ts=1569489067&"
         ],
-        "description": "Versátil e ultraconfortável para a academia, treinos leves de corrida, caminhada ou mesmo ocasiões casuais, o Tênis Nike Revolution 5 é a pedida certa para a mulher dinâmica e moderna. Seu cabedal (parte superior do tênis) apresenta a leveza e respirabilidade da malha mantém o frescor e flexibilidade dos movimentos. Na entressola, a inserção da espuma em toda a extensão garante uma pisada macia e suave com leve amortecimento. Já o solado do Nike Revolution 5 Feminino oferece excelente tração e uma distribuição natural das passadas. Não perca a oportunidade e aproveite o preço para comprar!",
+        "description": "Para a mulher que curte correr em grande estilo, aposte no Tênis Nike Revolution 5! Confeccionado em material leve e sem costura, permitindo maior conforto, sem atritos na hora da corrida. Conta com reforço no calcanhar para proteção contra possíveis torções, fechamento dinâmico, com mais ilhós para ajuste personalizado e borracha em ponto estratégicos no solado, para reduzir o desgaste durante a corrida. Esse tênis feminino foi desenvolvido para a mulher que busca conforto enquanto desafia seus limites na velocidade, não perca essa oportunidade aqui na Netshoes!",
         "categories": [
             "shoes"
         ],
@@ -35,20 +35,20 @@ export const PRODUCTS: Product[] = [
     },
     {
         "id": 2,
-        "title": "Tênis Asics Patriot 12 Noosa - Masculino",
+        "title": "Tênis Nike Downshifter 11 Feminino",
         "images": [
-            "https://imgcentauro-a.akamaihd.net/900x900/95077714/tenis-asics-patriot-12-noosa-masculino-img.jpg",
-            "https://imgcentauro-a.akamaihd.net/900x900/95077714A1/tenis-asics-patriot-12-noosa-masculino-img.jpg",
-            "https://imgcentauro-a.akamaihd.net/900x900/95077714A7/tenis-asics-patriot-12-noosa-masculino-img.jpg"
+            'https://static.netshoes.com.br/produtos/tenis-nike-downshifter-11-feminino/26/HZM-5209-026/HZM-5209-026_zoom1.jpg?ts=1620698810&',
+            'https://static.netshoes.com.br/produtos/tenis-nike-downshifter-11-feminino/26/HZM-5209-026/HZM-5209-026_zoom2.jpg?ts=1620698810&',
+            'https://static.netshoes.com.br/produtos/tenis-nike-downshifter-11-feminino/26/HZM-5209-026/HZM-5209-026_zoom3.jpg?ts=1620698810&'
         ],
-        "description": "Versátil para academia, caminhada, treinos leves de corrida ou mesmo na casualidade dos compromissos, o Asics Patriot 12 Noosa é um ótimo custo-benefício. Sua estrutura é leve e respirável em mesh (malha em tramas abertas) para mais flexibilidade aos movimentos e frescor duradouro. No colar do calcanhar, o reforço acolchoado oferece proteção contra o atrito de contato. Já a entressola de EVA garante maciez, leveza e amortecimento duradouro com um visual colorido que valoriza o modelo. Além disso, o solado garante a aderência necessária na superfície. Aproveite o ótimo preço e corra para comprar o seu!",
+        "description": "Para caminhadas e corridas leves na esteira ou nas ruas, aposte no conforto e qualidade do Tênis Nike Feminino para completar seu visual esportivo e treinar em busca do corpo saudável. Com um cabedal produzido em malha macia e respirável, o modelo possui tiras sintéticas que, junto ao calcanhar, garantem conforto e suporte para você ir mais longe. A entressola alta e fabricada em EVA proporciona amortecimento leve e deixa a passada mais suave. Já o solado emborrachado é aderente a diferentes tipos de piso, oferecendo segurança para você ultrapassar seus limites e ir cada vez mais longe. Se você é iniciante na corrida e está procurando por um tênis que faça a diferença, o novo Nike Downshifter 11 é a escolha certa. Aproveite!",
         "categories": [
             "shoes"
         ],
-        "price": 449.99,
-        "discount": 50,
-        "discountType": DiscountTypeEnum.PERCENT,
-        "finalPrice": 224.99,
+        "price": 329.99,
+        "discount": 110,
+        "discountType": DiscountTypeEnum.VALUE,
+        "finalPrice": 219.99,
         "promotions": [
             {
                 "id": 1,
@@ -61,22 +61,24 @@ export const PRODUCTS: Product[] = [
             35,
             36,
             37,
+            38,
+            39,
             40
         ]
     },
     {
         "id": 3,
-        "title": "Tênis Mizuno Wave Prophecy X - Masculino",
+        "title": "Tênis Adidas Coreracer Feminino",
         "images": [
-            "https://imgcentauro-a.akamaihd.net/900x900/95707805/tenis-mizuno-wave-prophecy-x-masculino-img.jpg",
-            "https://imgcentauro-a.akamaihd.net/900x900/95707858A1/tenis-mizuno-wave-prophecy-x-masculino-img.jpg",
-            "https://imgcentauro-a.akamaihd.net/900x900/95707858A7/tenis-mizuno-wave-prophecy-x-masculino-img.jpg"
+            "https://static.netshoes.com.br/produtos/tenis-adidas-coreracer-feminino/96/NQQ-4636-296/NQQ-4636-296_zoom1.jpg?ts=1616427402&",
+            "https://static.netshoes.com.br/produtos/tenis-adidas-coreracer-feminino/96/NQQ-4636-296/NQQ-4636-296_zoom2.jpg?ts=1616427402&",
+            "https://static.netshoes.com.br/produtos/tenis-adidas-coreracer-feminino/96/NQQ-4636-296/NQQ-4636-296_zoom5.jpg?ts=1616427402&"
         ],
-        "description": "É o aliado, diário para os seus treinos de alta performance, esse tênis Mizuno Wave Prophecy X. O cabedal (parte superior do calçado) em tecido com tramas abertas oferece mais elasticidade e suporte aos pés. Entressola em EVA conta com a nova placa Infinity Wave totalmente redesenhada com cortes estratégicos nos pontos de flexão do pé. Agora ela está 40% mais flexível e com 26% mais amortecimento. Corra e garanta seu tênis hoje e sinta a sensação que só a Mizuno tem a te oferecer!",
+        "description": "Se você é iniciante na corrida e está buscando um tênis adequado para o seu treino, o novo Adidas Corerace é o que você estava procurando. Com um cabedal confeccionado com material têxtil, a parte de cima do calçado conta também com tramas em mesh que garantem circulação de ar e ótima respirabilidade entre uma passada e outra. A entressola em EVA e o solado de borracha de alta qualidade garantem amortecimento leve e ótima tração. Com um design moderno, o Tênis Adidas Feminino é opção para o treino na esteira, na rua ou, até mesmo, para usar de forma casual. Aproveite a oportunidade e garanta já o seu.",
         "categories": [
             "shoes"
         ],
-        "price": 449.99,
+        "price": 79.99,
         "sizes": [
             35,
             36,
@@ -125,6 +127,28 @@ export const PRODUCTS: Product[] = [
                 "title": "3 por R$10,00",
                 "status": "warning",
                 "description": "Pague R$10,00 na compra de 3 produtos iguais"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Bermuda Nike Monster Mesh 5.0 Masculina",
+        "images": [
+            "https://static.netshoes.com.br/produtos/bermuda-nike-monster-mesh-50-masculina/26/HZM-3990-026/HZM-3990-026_zoom1.jpg?ts=1592995037&",
+            "https://static.netshoes.com.br/produtos/bermuda-nike-monster-mesh-50-masculina/26/HZM-3990-026/HZM-3990-026_zoom2.jpg?ts=1592995037&",
+            "https://static.netshoes.com.br/produtos/bermuda-nike-monster-mesh-50-masculina/26/HZM-3990-026/HZM-3990-026_zoom3.jpg?ts=1592995037&"
+        ],
+        "description": "Treine pesado se sentindo mais fresco com a Bermuda Masculina Nike Monster Mesh 5.0! Composta por tecido leve e altamente ventilado, a bermuda de academia conta com cós elástico de toque macio na pele, bolsos frontais e tecido Dri-Fit que ajusta a afastar o suor da pele para te manter no foco durante as séries.",
+        "categories": [
+            "socks"
+        ],
+        "price": 79.99,
+        "promotions": [
+            {
+                "id": 1,
+                "title": "Leve 2 e pague 1",
+                "status": "danger",
+                "description": "Na compra 2 produtos iguais pague por apenas 1"
             }
         ]
     },

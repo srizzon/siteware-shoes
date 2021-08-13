@@ -44,18 +44,18 @@ export class ProductItemComponent extends UnsubscribeOnDestroyAdapter implements
       this.currentSize = undefined;
     else {
       this.currentSize = size;
-      this.currentProduct.selectedSize = this.currentSize;
     }
   }
 
   addToCart(){
     let cart = this.cartStore.getCurrentState();
-    let cartItem = new CartItem(this.currentProduct);
 
-    if(cart.items.some(x => x.product == this.currentProduct))
-      cart.items.map(x => x.product == this.currentProduct ? x.quantity++ : x);
-    else
+    if(cart.items.some(x => x.product == this.currentProduct && (x.size ? x.size == this.currentSize : true)))
+      cart.items.map(x => (x.product == this.currentProduct && (x.size ? x.size == this.currentSize : true)) ? x.quantity++ : x);
+    else{
+      let cartItem = new CartItem(this.currentProduct, this.currentSize!);
       cart.items.push(cartItem);
+    }
     
     this.cartStore.updateCart(cart);
 

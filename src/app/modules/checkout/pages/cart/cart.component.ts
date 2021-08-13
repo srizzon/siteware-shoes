@@ -38,8 +38,8 @@ export class CartComponent extends UnsubscribeOnDestroyAdapter implements OnInit
     this.cartStore.updateCart(updateQuantity);
   }
 
-  deleteProduct(product: Product){
-    this.cartStore.deleteProduct(product.id);
+  deleteProduct(cartItem: CartItem){
+    this.cartStore.deleteProduct(cartItem);
   }
 
   clear(){

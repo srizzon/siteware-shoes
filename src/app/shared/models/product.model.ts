@@ -13,5 +13,4 @@ export class Product {
     finalPrice?: number;
     promotions?: Promotion[];
     sizes?: number[];
-    selectedSize?: number;
 }
