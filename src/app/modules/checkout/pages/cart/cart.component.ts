@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbToastrService } from '@nebular/theme';
 import { Observable } from 'rxjs';
 import { UnsubscribeOnDestroyAdapter } from 'src/app/shared/adapters/unsubs-ondestroy.adapter';
 import { CartItem } from 'src/app/shared/models/cart-item.model';
@@ -15,12 +16,16 @@ export class CartComponent extends UnsubscribeOnDestroyAdapter implements OnInit
 
   cart$: Observable<Cart>;
 
-  constructor(private cartStore: CartStore) {
+  constructor(private cartStore: CartStore, private toastrService: NbToastrService) {
     super();
   }
 
   ngOnInit(): void {
     this.cart$ = this.cartStore.selectState();
+  }
+
+  checkout(){
+    this.toastrService.success("Aguardando a aprovação de pagamento!", "Compra realizada!");
   }
 
   updateQuantity(operator: string, currentItem: CartItem){

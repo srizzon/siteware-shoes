@@ -89,7 +89,7 @@
                             </div>
                         </div>
 
-                        <button nbButton fullWidth status="success" [disabled]="cart.total == 0">
+                        <button nbButton fullWidth status="success" [disabled]="cart.total == 0" (click)="checkout()">
                             Finalizar compra
                         </button>
                     </nb-card-body>
