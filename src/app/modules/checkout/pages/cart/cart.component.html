@@ -9,7 +9,7 @@
     </nb-card-header>
     <nb-card-body>
         <div class="row">
-            <div class="col-8">
+            <div class="col-sm-8 col-xs-12">
                 <nb-card class="list-items" *ngFor="let item of cart.items">
                     <nb-card-header>
                         <h6>{{item.product.title}}</h6>
@@ -20,11 +20,11 @@
                     </nb-card-header>
                     <nb-card-body>
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-sm-2 col-xs-12">
                                 <img width="100" [src]="item.product.images[0]" alt="">
                             </div>
 
-                            <div class="col-10 info">
+                            <div class="col-sm-10 col-xs-12 info">
                                 <label *ngIf="item.size" class="label">Tamanho: {{item.size}}</label>
                                 <label class="label">Vendido e entregue por: Siteware Shoes</label>
 
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-8 quantity">
+                            <div class="col-sm-10 col-xs-12 quantity">
                                 <button nbButton status="primary" size="tiny" (click)="updateQuantity('minus', item)">
                                     <nb-icon icon="minus-outline"></nb-icon>
                                 </button>
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-4 prices">
+                            <div class="col-sm-4 col-xs-12 prices">
                                 <price-with-discount [product]="item.product"></price-with-discount>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                     </button>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-sm-4 col-xs-12">
                 <nb-card>
                     <nb-card-header>
                         <h6>Resumo da compra</h6>

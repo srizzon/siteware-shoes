@@ -140,7 +140,7 @@ export const PRODUCTS: Product[] = [
         ],
         "description": "Treine pesado se sentindo mais fresco com a Bermuda Masculina Nike Monster Mesh 5.0! Composta por tecido leve e altamente ventilado, a bermuda de academia conta com cós elástico de toque macio na pele, bolsos frontais e tecido Dri-Fit que ajusta a afastar o suor da pele para te manter no foco durante as séries.",
         "categories": [
-            "socks"
+            "clothes"
         ],
         "price": 79.99,
         "promotions": [
@@ -152,5 +152,53 @@ export const PRODUCTS: Product[] = [
             }
         ]
     },
-
+    {
+        "id": 8,
+        "title": "Chuteira Campo Nike Mercurial Vapor Club",
+        "images": [
+            "https://static.netshoes.com.br/produtos/chuteira-campo-nike-mercurial-vapor-club/72/HZM-5373-172/HZM-5373-172_zoom1.jpg?ts=1626301052&",
+            "https://static.netshoes.com.br/produtos/chuteira-campo-nike-mercurial-vapor-club/72/HZM-5373-172/HZM-5373-172_zoom2.jpg?ts=1626301052&",
+            "https://static.netshoes.com.br/produtos/chuteira-campo-nike-mercurial-vapor-club/72/HZM-5373-172/HZM-5373-172_zoom3.jpg?ts=1626301052&",
+            "https://static.netshoes.com.br/produtos/chuteira-campo-nike-mercurial-vapor-club/72/HZM-5373-172/HZM-5373-172_zoom4.jpg?ts=1626301052&",
+            "https://static.netshoes.com.br/produtos/chuteira-campo-nike-mercurial-vapor-club/72/HZM-5373-172/HZM-5373-172_zoom5.jpg?ts=1626301052&",
+            "https://static.netshoes.com.br/produtos/chuteira-campo-nike-mercurial-vapor-club/72/HZM-5373-172/HZM-5373-172_zoom6.jpg?ts=1626301052&"
+        ],
+        "description": "A boleirada vai destruir o jogo entrando em campo com a nova Chuteira Campo Nike. O modelo Vapor Club da linha Mercurial chega repaginado com um cabedal de material flexível e levemente texturizado para você ter maior precisão ao conduzir a bola em alta velocidade. Um forro confortável envolve seu pé e proporciona uma sensação mais natural e juste. Já o solado com travas altas e fixas oferecem segurança para você arriscar as melhores jogadas. Brilhe dentro das quatro linhas com a Chuteira Campo da Nike.",
+        "categories": [
+            "shoes"
+        ],
+        "price": 249.99,
+        "discount": 99,
+        "discountType": DiscountTypeEnum.VALUE,
+        "finalPrice": 159.99,
+        "sizes": [
+            35,
+            36,
+            37,
+            40
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Mochila Wilson Big Logo - Vermelho",
+        "images": [
+            "https://static.netshoes.com.br/produtos/mochila-wilson-big-logo/16/NSP-0057-016/NSP-0057-016_zoom1.jpg?ts=1628136852&",
+            "https://static.netshoes.com.br/produtos/mochila-wilson-big-logo/16/NSP-0057-016/NSP-0057-016_zoom3.jpg?ts=1628136852&",
+            "https://static.netshoes.com.br/produtos/mochila-wilson-big-logo/16/NSP-0057-016/NSP-0057-016_zoom4.jpg?ts=1628136852&",
+            "https://static.netshoes.com.br/produtos/mochila-wilson-big-logo/16/NSP-0057-016/NSP-0057-016_zoom5.jpg?ts=1628136852&"
+        ],
+        "description": "Com amplo espaço interno e dois compartimentos, a Mochila Wilson Big Logo é ideal para organização dos itens de treino e do dia a dia, garantindo conforto e segurança para os seus pertences. É confeccionada em material resistente com bolsos laterais e alça acolchoada que gantante conforto e praticidade. Peça já a sua mochila Wilson!",
+        "categories": [
+            "others"
+        ],
+        "price": 94.99,
+        "promotions": [
+            {
+                "id": 1,
+                "title": "Leve 2 e pague 1",
+                "status": "danger",
+                "description": "Na compra 2 produtos iguais pague por apenas 1"
+            }
+        ]
+    },
 ]

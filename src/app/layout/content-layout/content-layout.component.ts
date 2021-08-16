@@ -29,6 +29,16 @@ export class ContentLayoutComponent {
           link: '/products',
           queryParams: {category: 'socks'}
         },
+        {
+          title: 'Roupas',
+          link: '/products',
+          queryParams: {category: 'clothes'}
+        },
+        {
+          title: 'Outros',
+          link: '/products',
+          queryParams: {category: 'others'}
+        },
       ]
     },
     {

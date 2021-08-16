@@ -3,8 +3,8 @@
         <h4>{{currentProduct.title}}</h4>
     </nb-card-header>
     <nb-card-body>
-        <div class="product-item">
-            <div class="col-5 images">
+        <div class="row product-item">
+            <div class="col-sm-5 col-xs-12 images">
                 <img class="current-image" [src]="currentImage || currentProduct.images[0]" alt="">
 
                 <ngx-glide [perView]="3" [showBullets]="false" [arrowLeftTemplate]="arrowLeftTemplate"
@@ -28,7 +28,7 @@
                 </ng-template>
             </div>
 
-            <div class="col-7 informations">
+            <div class="col-sm-7 col-xs-12 informations">
                 <div class="flex-horizontal">
                     <nb-badge *ngFor="let item of currentProduct.promotions" [text]="item.title" [status]="item.status"
                         position="top left" nbTooltip="{{item.description}}"></nb-badge>

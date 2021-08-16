@@ -7,20 +7,20 @@
 
 
             <div class="row">
-                <div class="col-5">
+                <div class="col-lg-5 col-xs-12">
                     <div class="form-group">
                         <label class="label">Título*</label>
                         <input type="text" nbInput fullWidth placeholder="Título" formControlName="title">
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-lg-2  col-xs-12">
                     <div class="form-group">
                         <label class="label">Preço*</label>
                         <input type="text" nbInput fullWidth
                             placeholder="Preço" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }" formControlName="price">
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-lg-3  col-xs-12">
                     <div class="form-group">
                         <label class="label">Tipo do desconto</label>
                         <nb-select fullWidth placeholder="Tipo do desconto" formControlName="discountType">
@@ -30,7 +30,7 @@
                         </nb-select>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-lg-2  col-xs-12">
                     <div class="form-group">
                         <label class="label">Desconto</label>
                         <input *ngIf="!form.get('discountType')?.value" type="text" nbInput fullWidth placeholder="Desconto" readonly formControlName="discount">
@@ -41,7 +41,7 @@
             </div>
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-xs-12">
                     <div class="form-group">
                         <label class="label">Descrição</label>
                         <textarea nbInput fullWidth rows="5" formControlName="description"></textarea>
@@ -50,16 +50,17 @@
             </div>
 
             <div class="row">
-                <div class="col-3">
+                <div class="col-lg-3 col-xs-12">
                     <div class="form-group">
                         <label class="label">Categorias</label>
                         <nb-select multiple fullWidth placeholder="Categorias" formControlName="categories">
-                            <nb-option value="shoes">Shoes</nb-option>
-                            <nb-option value="socks">Socks</nb-option>
+                            <nb-option value="shoes">Tênis</nb-option>
+                            <nb-option value="socks">Meias</nb-option>
+                            <nb-option value="clothes">Roupas</nb-option>
                         </nb-select>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-xs-12">
                     <div class="form-group">
                         <label class="label">Promoções</label>
                         <nb-select fullWidth placeholder="Promoções" formControlName="promotions">
@@ -68,7 +69,7 @@
                         </nb-select>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lg-4 col-xs-12">
                     <div class="form-group">
                         <label class="label">Tamanhos</label>
                         <nb-select multiple fullWidth placeholder="Tamanhos" formControlName="sizes">
@@ -79,7 +80,7 @@
             </div>
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-xs-12">
                     <div class="form-group">
                         <label class="label">Imagens*</label>
                         <textarea nbInput fullWidth rows="3" placeholder="Coloque aqui os links das imagens do produto" formControlName="images"></textarea>
@@ -89,7 +90,7 @@
             </div>
 
             <div class="row">
-                <div class="col-4">
+                <div class="col-lg-4 col-xs-12">
                     <div class="form-group">
                         <button nbButton size="small" status="primary" (click)="submit()" [disabled]="form.invalid || !form.dirty">
                             Salvar

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,10 +26,10 @@ import { ProductStore } from './shared/state/product-store';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    NbLayoutModule,
     NbMenuModule.forRoot(),
     NbSidebarModule.forRoot(),
     NbThemeModule.forRoot({ name: 'default' }),
-    NbLayoutModule,
     NbEvaIconsModule,
     SharedModule,
     NgSimpleStateModule.forRoot({
@@ -39,7 +39,14 @@ import { ProductStore } from './shared/state/product-store';
     NgxMaskModule.forRoot(),
     NbToastrModule.forRoot(),
   ],
-  providers: [ProductStore, PromotionStore, CartStore],
+  providers: [
+    ProductStore,
+    PromotionStore,
+    CartStore,
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

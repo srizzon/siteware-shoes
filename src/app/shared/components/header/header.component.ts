@@ -17,9 +17,4 @@ export class HeaderComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.cartQuantity$ = this.cartStore.selectQuantity();
   }
-
-  toggle() {
-    this.sidebarService.compact();
-  }
-
 }

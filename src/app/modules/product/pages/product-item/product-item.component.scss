@@ -21,7 +21,6 @@ nb-badge {
     }
 
     img {
-        padding: 30px;
         object-fit: cover;
     }
 }
@@ -39,7 +38,7 @@ nb-badge {
 }
 
 ::ng-deep {
-    .glide__slides{
+    .glide__slides {
         padding: 10px;
     }
 
@@ -48,5 +47,4 @@ nb-badge {
         gap: 10px;
         justify-content: center;
     }
-    
 }
